@@ -214,7 +214,7 @@ kbd{background:var(--border);padding:1px 5px;border-radius:4px;font-size:10px;fo
     <!-- nav items injected by JS -->
   </div>
   <div id="sidebar-bottom">
-    <button class="btn-simulado" onclick="openSimulado()">🎯 Simulado Completo — 133Q</button>
+    <button class="btn-simulado" onclick="openSimulado()">🎯 Simulado Completo — 214Q</button>
   </div>
 </nav>
 
@@ -223,7 +223,7 @@ kbd{background:var(--border);padding:1px 5px;border-radius:4px;font-size:10px;fo
   <div id="view-home" class="fade-in">
     <div class="home-hero">
       <h2>Compilado CF<br><em>Agente 2026</em></h2>
-      <p>133 questões organizadas em 16 módulos temáticos. Estude os pontos-chave e teste seu conhecimento com quizzes interativos.</p>
+      <p>188 questões organizadas em 29 módulos temáticos. Estude os pontos-chave e teste seu conhecimento com quizzes interativos.</p>
     </div>
     <div class="home-grid" id="home-grid"></div>
     <div class="progress-overview">
@@ -257,7 +257,7 @@ kbd{background:var(--border);padding:1px 5px;border-radius:4px;font-size:10px;fo
       <h2>🎯 Simulado Completo</h2>
       <div class="sim-meta">
         <button class="btn btn-outline btn-sm" onclick="openHome()">← Home</button>
-        <div class="sim-counter" id="sim-counter">0 / 133</div>
+        <div class="sim-counter" id="sim-counter">0 / 188</div>
         <div class="sim-pbar"><span id="sim-pbar-fill" style="width:0%"></span></div>
       </div>
     </div>
@@ -282,10 +282,22 @@ keyPoints:[
   ['Redução de alíquota','Saúde/educação/alimentos/transporte coletivo: 60% — Serviços financeiros: 30%'],
   ['DIFAL "por dentro"','Alíquota efetiva = Alíquota nominal ÷ (1 − Alíquota interna)'],
   ['BC com MVA (ICMS-ST)','Valor da operação própria + frete + seguro + impostos + percentual da MVA'],
+
+['Imposto Seletivo (IS)','Tributo federal extrafiscal; incide sobre bens/serviços nocivos à saúde/ambiente (tabaco, bebidas, veículos poluentes); NÃO substitui o IPI; alíquota variável por produto'],
+  ['Redução 60%','Saúde, educação, medicamentos, dispositivos médicos, transporte coletivo, produções artístico-culturais, alimentos da cesta básica ampliada'],
+  ['Redução 30%','Serviços financeiros (seguros, planos de saúde)'],
+  ['Não cumulatividade IBS/CBS','Crédito amplo: todo IBS/CBS pago nas etapas anteriores pode compensar o imposto devido nas saídas — elimina efeito cascata'],
+  ['Apuração Assistida','Fisco pré-calcula com base nos DF-e; contribuinte valida ou retifica'],
+  ['Obrigações acessórias','Competência exclusiva do CGIBS — garante uniformidade nacional'],
+  ['Compensação','Extinção sob condição resolutória de posterior auditoria/homologação'],
+  ['Doc. Fiscal Inidôneo','Veda aproveitamento dos créditos do IBS e CBS pelo adquirente'],
 ],
 alerts:[
   {type:'warning',title:'⚠️ Atenção',text:'O princípio do DESTINO rompe com o princípio da ORIGEM do ICMS, que gerava guerra fiscal.'},
   {type:'info',title:'📌 Extinção do Crédito Tributário',text:'Pagamento · Compensação · Transação · Remissão · Decadência · Prescrição · Conversão do depósito · Consignação em pagamento · Decisão irreformável · Dação em pagamento de bens imóveis'},
+
+{type:'info',title:'📌 IS ≠ IPI',text:'O Imposto Seletivo NÃO substitui o IPI — são tributos distintos. O IPI permanece existindo durante a transição. O IS incide especificamente sobre bens prejudiciais à saúde/ambiente.'},
+  {type:'warning',title:'⚠️ Redução de alíquota — decora as faixas',text:'60% = saúde, educação, medicamentos, alimentos, transporte coletivo. 30% = serviços financeiros. Streaming e plataformas digitais NÃO têm redução.'},
 ]},
 
 {id:1,emoji:'📊',color:'#10b981',title:'Declaração Fiscal e EFD',qrange:[4,6],
@@ -302,10 +314,22 @@ keyPoints:[
   ['Antecipação Parcial','PI020004 (crédito) + PI050006 (débito especial) com o MESMO VALOR'],
   ['Bloco H','Inventário. Declarado na EFD de fevereiro (referência 31/12). Ausência gera Alerta'],
   ['EFD sem movimento','E100 e E110 com valores ZERADOS — nunca em branco'],
+
+['Prazo entrega EFD','20º dia do 2º mês subsequente ao período de referência'],
+  ['SIMEI dispensado','Microempreendedor Individual (SIMEI) está dispensado da EFD'],
+  ['Bloco E','Apuração do ICMS e IPI — o bloco mais importante para a fiscalização'],
+  ['Bloco G','CIAP — Controle de Crédito do Ativo Imobilizado'],
+  ['Bloco H','Inventário — entregue na EFD de fevereiro (referência 31/12); ausência gera Alerta'],
+  ['Antecipação Parcial','PI020004 (crédito) + PI050006 (débito especial) — valores obrigatoriamente iguais'],
+  ['FECOP','PI040003 (dedução) + PI050010 (débito especial) no E111; obrigação de recolhimento no E116'],
+  ['EFD sem movimento','E100 abre o período; E110 com valores zerados — NUNCA campos em branco'],
 ],
 alerts:[
   {type:'warning',title:'⚠️ Divergência de saldo credor',text:'Declarado MENOR que o transportado → IMPEDITIVA (mais grave, reduz crédito). Declarado MAIOR que o transportado → ALERTA'},
   {type:'info',title:'📌 Credenciamento no SIAT Web',text:'Quando o cadastro no SIAT Web não repercute no e-AGEAT, o atendente deve abrir chamado na UNITEC via SysAid com imagens comprobatórias.'},
+
+{type:'info',title:'📌 Blocos EFD — mnemônico',text:'Bloco C = Documentos fiscais. Bloco E = Apuração ICMS/IPI. Bloco G = CIAP. Bloco H = Inventário. Bloco K = Controle de produção.'},
+  {type:'warning',title:'⚠️ Antecipação Parcial vs. Antecipação Total',text:'Antecipação Parcial = PI020004 + PI050006. Antecipação Total (ST) usa códigos diferentes. Se os valores do par parcial divergirem ≥ R$100 → inconsistência de integridade.'},
 ]},
 
 {id:2,emoji:'🏢',color:'#8b5cf6',title:'CAGEP + REDESIM',qrange:[7,9],
@@ -317,10 +341,20 @@ keyPoints:[
   ['Substituto Tributário outra UF','Inscrição via Ficha Cadastral (FC) — NÃO pelo Portal Piauí Digital/REDESIM'],
   ['Evento 244','Alteração de CNAE: insere CNAE comercial → abre IE; remove todos → baixa IE'],
   ['Evento 210','Mudança de endereço entre estados. Para o PI → abre IE. Sai do PI → baixa IE'],
+
+['IE por estabelecimento','Cada estabelecimento (matriz e filiais) possui Inscrição Estadual própria e independente'],
+  ['Suspensão a pedido','Prazo máximo de 180 dias; ao término, requerer reativação ou prorrogação — senão cancelamento de ofício'],
+  ['MEI só ISSQN','MEI que exerce exclusivamente atividades sujeitas ao ISSQN NÃO precisa de IE no CAGEP'],
+  ['MEI com mercadorias','MEI que comercializa mercadorias precisa de IE; usa NFA-e ou NFF, NUNCA NF-e em sistema próprio'],
+  ['Coworking','Vedado manter estoque físico e movimentação física de mercadorias em coworking'],
+  ['ST outra UF','Inscrição via Ficha Cadastral — NÃO pelo Portal Piauí Digital/REDESIM'],
 ],
 alerts:[
   {type:'info',title:'📋 Eventos REDESIM Nacionais',text:'101: 1ª inscrição · 102: Filial · 210: Mudança entre estados · 232: Troca de contabilista · 244: Alteração CNAE · 247: Alteração quadro social · 517: Baixa vinculada ao CNPJ'},
   {type:'success',title:'📋 Eventos Exclusivos do Piauí',text:'601: Nova IE para CNPJ existente · 602: Substituto Tributário (outra UF) · 604: Baixa exclusiva no estado · 606: Empresa de outra UF (exceto ST) · 607: Baixa de Substituto Tributário'},
+
+{type:'info',title:'📌 Suspensão a pedido vs. de ofício',text:'A pedido: 180 dias, reativação formal ao término. De ofício: por endereço não localizado, incompatibilidade, EFD sem movimento (6 períodos), MEI com compras > limite + 20%, irregular 3 períodos consecutivos.'},
+  {type:'warning',title:'⚠️ MEI — atenção dupla',text:'MEI só ISSQN → sem IE. MEI com circulação de mercadorias → com IE, mas usa NFA-e ou NFF. Nunca NF-e em sistema próprio. MEI também é situação de CVI no trânsito.'},
 ]},
 
 {id:3,emoji:'📄',color:'#06b6d4',title:'Documentos Fiscais Eletrônicos',qrange:[10,12],
@@ -337,9 +371,38 @@ keyPoints:[
   ['Desconhecimento','CNPJ/CPF usado indevidamente; aciona malhas (destinatário)'],
   ['Manifestação destinatário','Prazo 180 dias; vale o ÚLTIMO registrado'],
   ['CT-e cancela em','168 horas (7 dias) se a carga não circulou'],
+
+['Linha do tempo','NF-e (2005) → CT-e (2007) → MDF-e (2010) → NFC-e (2011) → BP-e (2017) → DCe (2026)'],
+  ['Relação DF-e','NF-e (Mod. 55) → venda/mercadoria | CT-e (Mod. 57) → transporte de cargas | MDF-e (Mod. 58) → operação logística'],
+  ['CRT 1','Simples Nacional'],['CRT 2','Simples Nacional — excesso de sublimite'],
+  ['CRT 3','Regime Normal'],['CRT 4','MEI'],
+  ['CST — 1º dígito','Origem: 0=Nacional; 1/2=Estrangeira direta/indireta'],
+  ['CST — 2º e 3º dígitos','00=Tributada integral · 40=Isenta · 41=Não tributada · 51=Diferimento'],
+  ['CT-e tpServ=0 (Normal)','Usar campo infDoc (chave da NF-e)'],
+  ['CT-e tpServ=2,4','Usar campo docAnt (chaves de CT-e anteriores)'],
+  ['MDF-e — Quantidade','Um MDF-e por UF de DESCARREGAMENTO (pode ≠ UF destino final)'],
+  ['MDF-e — Obrigados','Emitente de CT-e · Emitente de NF-e com veículo próprio/TAC · Destinatário responsável'],
+  ['MDF-e — Inclusão condutor','APENAS modal rodoviário; até 10 condutores'],
+  ['MDF-e — Inclusão DF-e','Só para operação INTERNA na UF'],
+  ['MDF-e pendente','Bloqueia novo MDF-e para o mesmo par UF/veículo'],
+  ['Subcontratação e MDF-e','Obrigação de quem EFETIVAMENTE realiza o transporte (transportadora subcontratada)'],
+
+['EPEC','Registrado pelo emitente na SEFAZ Virtual ANTES da transmissão do XML; garante validade jurídica à NF-e em contingência'],
+  ['Contingência Offline','Exclusiva da NFC-e (mod. 65); NÃO disponível para NF-e modelo 55'],
+  ['CT-e: Remetente vs Expedidor','Remetente = ponto de partida original. Expedidor = quem entrega a carga ao transportador em ponto intermediário'],
+  ['CT-e: Destinatário vs Recebedor','Destinatário = destinação final. Recebedor = quem efetivamente recebe no destino (pode ser diferente)'],
+  ['NFA-e','Destinada ao MEI, pessoas físicas ou jurídicas NÃO inscritas no CAGEP; emissão para fins ilícitos gera responsabilidade civil e penal'],
+  ['CC-e — vedações','NÃO corrige: valores de imposto (BC, preço, quantidade), dados de emitente/destinatário, data de emissão/saída, dados de exportação (DU-E)'],
+  ['CC-e — permitido','Descrição complementar do produto, dados do transportador/veículo, observações'],
 ],
 alerts:[
   {type:'warning',title:'⚠️ Tipos de CT-e',text:'Normal: trajeto completo por 1 transportadora | Subcontratação: 2ª faz o trajeto INTEIRO | Redespacho: 2ª faz apenas o TRECHO RESTANTE | Redespacho Intermediário: faz só trecho do meio, sem coletar na origem nem entregar no destino | Multimodal: 2+ modais'},
+
+{type:'warning',title:'⚠️ Eventos por tipo',text:'Modificadores: alteram o documento (ex: Cancelamento). Informativos: não alteram (ex: Carta de Correção, Registro de Passagem)'},
+  {type:'info',title:'📌 CT-e — Tipos de serviço',text:'0=Normal · 1=Subcontratação · 2=Redespacho · 3=Redespacho Intermediário · 4=Multimodal'},
+
+{type:'warning',title:'⚠️ CC-e — o que pode e não pode',text:'CC-e PODE corrigir erros que não afetem impostos. CC-e NÃO PODE corrigir: preço, quantidade, BC do ICMS, dados de emitente/destinatário, data. Para esses campos: cancelar e reemitir dentro do prazo.'},
+  {type:'info',title:'📌 Contingência NF-e modelo 55',text:'Modalidades: EPEC (emitente registra na SEFAZ Virtual antes do XML), SVC (SEFAZ Virtual de Contingência), FS-DA (Formulário de Segurança). A contingência Offline é exclusiva da NFC-e.'},
 ]},
 
 {id:4,emoji:'📘',color:'#f59e0b',title:'Lei Complementar 62/2005',qrange:[13,14],
@@ -352,9 +415,20 @@ keyPoints:[
   ['Classe Especial','Requer pós-graduação lato sensu + interstício + 100h'],
   ['Pena de demissão','Extraviar/sonegar processo fiscal causando recolhimento inexato | Exigir vantagem para não lançar/cobrar tributo'],
   ['ARF — parcela arrecadação','Devida após 3 meses de efetivo exercício'],
+
+['Estrutura de carreira','4 classes (I, II, III, Especial) × 3 referências (A, B, C) = 12 posições; nomeação sempre em I-A'],
+  ['ARF — parcela por Metas','Disponível desde o primeiro dia de exercício'],
+  ['ARF — parcela por Arrecadação','Disponível apenas após 3 meses de efetivo exercício'],
+  ['ARF — Multas','Componente exclusivo do AFFE — NÃO do AFTE'],
+  ['ARF — Incremento Nominal','Restrito ao grupo TAF (AFFE + AFTE); NÃO inclui AFC/ATE'],
+  ['Restrições progressão/promoção','Falta injustificada (12 meses), licença interesse particular (12 meses), pena disciplinar exceto advertência (2 anos), mandato eletivo, disponibilidade, sem nível superior'],
+  ['Classe Especial','Exige pós-graduação lato sensu na área + interstício de 1 ano + mínimo 100h de capacitação'],
 ],
 alerts:[
   {type:'danger',title:'❌ Restrições para progressão/promoção',text:'• Não comprovar nível superior • Disponibilidade ou mandato eletivo • Licença p/ interesse particular nos últimos 12 meses • Pena disciplinar (exceto advertência) nos últimos 2 anos • Falta injustificada nos últimos 12 meses'},
+
+{type:'info',title:'📌 ARF — decora a estrutura',text:'Metas (desde o início) + Arrecadação (após 3 meses) + Multas (AFFE) + Incremento Nominal (TAF). O AFTE recebe Metas, Arrecadação e Incremento Nominal, mas NÃO recebe Multas.'},
+  {type:'warning',title:'⚠️ Classe Especial exige pós-graduação',text:'Para promoção à Classe Especial: pós-graduação lato sensu na respectiva área de atuação — diferente das demais classes que exigem apenas cursos de capacitação.'},
 ]},
 
 {id:5,emoji:'🔐',color:'#a78bfa',title:'LGPD',qrange:[15,16],
@@ -365,10 +439,20 @@ keyPoints:[
   ['Hipóteses de tratamento','Consentimento · Obrigação legal · Políticas públicas · Pesquisa · Contrato · Processos judiciais/adm · Proteção da vida · Saúde · Legítimo interesse · Crédito'],
   ['SEFAZ e LGPD','Trata dados com base em OBRIGAÇÃO LEGAL e POLÍTICAS PÚBLICAS — dispensa consentimento individual'],
   ['Boas práticas de senhas','Maiúsculas + minúsculas + números + símbolos · Sem dados óbvios (data nasc., matrícula) · Não compartilhar'],
+
+['Indenização','Existe na LGPD, mas NÃO é automática — exige comprovação de dano pelo tratamento irregular'],
+  ['Dados sensíveis','Origem racial/étnica, convicção religiosa, opinião política, filiação sindical/religiosa/filosófica/política, saúde, vida sexual, dados genéticos ou biométricos'],
+  ['NÃO são dados sensíveis','Endereço residencial e telefone = dados pessoais simples (não sensíveis)'],
+  ['Autodeterminação informativa','Direito do titular de controlar e conhecer como seus dados são tratados, usados e compartilhados'],
+  ['10 Princípios','Finalidade · Adequação · Necessidade · Livre Acesso · Qualidade · Transparência · Segurança · Prevenção · Não Discriminação · Responsabilização'],
+  ['Hipóteses de tratamento','Consentimento · Obrigação legal · Políticas públicas · Pesquisa · Contrato · Processos judiciais · Proteção da vida · Saúde · Legítimo interesse · Crédito'],
 ],
 alerts:[
   {type:'info',title:'📌 Fundamentos da LGPD',text:'Privacidade · Autodeterminação informativa · Liberdade de expressão · Livre iniciativa · Desenvolvimento econômico e tecnológico'},
   {type:'warning',title:'⚠️ Segurança da Informação',text:'Não usar wi-fi pública no trabalho · Não instalar programas não autorizados · Fazer logout em equipamentos compartilhados · Bloquear estação ao se ausentar'},
+
+{type:'info',title:'📌 Dados sensíveis — mnemônico',text:'Pense em dados que, se vazados, podem causar discriminação séria: origem étnica, religião, política, sindicato, saúde, vida sexual, biometria, genética. Endereço e telefone são pessoais simples, não sensíveis.'},
+  {type:'warning',title:'⚠️ Indenização LGPD não é automática',text:'O titular deve provar o dano causado pelo tratamento irregular. Não há responsabilidade objetiva irrestrita.'},
 ]},
 
 {id:6,emoji:'🚗',color:'#f97316',title:'IPVA + SIAT Web',qrange:[17,21],
@@ -383,9 +467,20 @@ keyPoints:[
   ['Isenção PcD (Lei 8.946/2026)','Veículo nacional · até R$200.000 de BC · um por beneficiário · não precisa ser adaptado'],
   ['Isenção motorista app','Veículo nacional · ≥10 meses cadastrado · única fonte de renda · mínimo de viagens comprovado'],
   ['Cadastro de veículos','Pertence ao DETRAN; SEFAZ apenas replica. DETRAN libera CRLV após autorização da SEFAZ'],
+
+['BC veículo novo','Nota Fiscal Eletrônica (NF-e) do veículo novo'],
+  ['BC veículo usado','Tabela FIPE (valor de mercado apurado)'],
+  ['Cadastro de veículos','Pertence ao DETRAN; SEFAZ apenas replica. DETRAN só libera CRLV após autorização da SEFAZ'],
+  ['Isenção PcD (Lei 8.946/2026)','Veículo de fabricação nacional; BC ≤ R$200.000; 1 veículo por beneficiário; NÃO precisa ser adaptado'],
+  ['PcD beneficiários','PcD física, visual, auditiva, mental severa/profunda e autistas'],
+  ['Isenção motorista de app','4 condições cumulativas: (1) veículo nacional, (2) ≥10 meses cadastrado na plataforma, (3) única fonte de renda, (4) mínimo de viagens comprovado'],
+  ['Parcelamento IPVA','Ainda no SiatVB — NÃO disponível no SIAT Web; parcela mínima = 30 UF'],
 ],
 alerts:[
   {type:'info',title:'📌 Comprovante de pagamento do IPVA',text:'O DAR (Documento de Arrecadação) autenticado é o comprovante válido de pagamento — não o CRLV.'},
+
+{type:'info',title:'📌 Isenção PcD — novidade da Lei 8.946/2026',text:'A nova lei ampliou a isenção: NÃO exige mais que o veículo seja especialmente adaptado. Basta ser veículo nacional, BC ≤ R$200k e 1 por beneficiário.'},
+  {type:'warning',title:'⚠️ Motorista de app — 4 condições cumulativas',text:'Todas as 4 condições devem ser atendidas simultaneamente. Se faltar qualquer uma (ex.: segunda fonte de renda, menos de 10 meses, poucas viagens), não há isenção.'},
 ]},
 
 {id:7,emoji:'📞',color:'#10b981',title:'CzRM / Atendimento',qrange:[22,31],
@@ -400,10 +495,22 @@ keyPoints:[
   ['Informações protegidas','Só fornecidas ao PRÓPRIO contribuinte ou representante com procuração formalizada'],
   ['Linguagem Simples (Lei 8.901/2025)','Parágrafos até 5 linhas · frases curtas · voz ativa · ordem direta (S-V-O) · sem jargão · informação mais importante PRIMEIRO'],
   ['Agendamento presencial','Cancelamento com até 30 minutos de antecedência'],
+
+['Fórmula IEA','IEA = (TAPC + TAVC) / (TAPD + TAVD) — Meta: 85%'],
+  ['TAVC','Total de Atendimento Virtual Concluído (não confundir com Categorizado ou Confirmado)'],
+  ['Usuário bloqueado SIATWeb','N1 solicita print comprobatório → encaminha ao N2 para desbloqueio'],
+  ['Não credenciado (e-AGEAT)','SIAT Web não repercute no e-AGEAT → abrir chamado na UNITEC via SysAid'],
+  ['ICMS Energia/Comunicações','N3 — UNIFIS/GEAUD-Energia — responsável: Luiz Gonzaga'],
+  ['EFD/código de ajuste (geral)','N3 — UNIFIS/EFD — responsável: Luiz Riegel'],
+  ['ICMS-ST','N3 — UNIFIS/GEAUD-SubstTrib — responsável: Rosana Leal'],
+  ['Fundamento legal CzRM','LC 62/2005, art. 8º, inc. I, alínea "e" — AFTE: prestação de informações'],
 ],
 alerts:[
   {type:'info',title:'📋 10 Princípios de Bom Atendimento',text:'1) Consulte os sistemas · 2) Pesquise na legislação · 3) Solicite mais informações se incompleto · 4) Preserve o sigilo fiscal · 5) Não dê opiniões pessoais · 6) Use linguagem simples · 7) Personalize · 8) Guarde respostas frequentes · 9) Responda com agilidade · 10) Transfira quando não for de sua alçada'},
   {type:'warning',title:'⚠️ Código de Ética (Portaria GASEC nº 5/2021)',text:'Inc. VIII: respeitar sigilo profissional e zelar pela confidencialidade. Inc. IX: abster-se de repassar informações que comprometam a segurança das operações.'},
+
+{type:'info',title:'📌 Bloqueado ≠ Não credenciado',text:'Bloqueado no SIATWeb → N2 desbloqueia (N1 encaminha com print). Não credenciado (SIAT Web não repercutiu no e-AGEAT) → chamado na UNITEC via SysAid com imagens comprobatórias.'},
+  {type:'warning',title:'⚠️ IEA — decore os termos',text:'TAPC = Presencial Concluído, TAVC = Virtual Concluído, TAPD = Presencial Demandado, TAVD = Virtual Demandado. Meta ≥ 85%.'},
 ]},
 
 {id:8,emoji:'🔍',color:'#ef4444',title:'Malhas Fiscais',qrange:[32,39],
@@ -423,32 +530,21 @@ keyPoints:[
   ['Opção B — Declaração Complementar','Quando retificação é inviável · Permite parcelamento · Exige PET posterior para exclusão manual'],
   ['Espontaneidade encerra','Com a ciência do TIF (Termo de Início de Fiscalização)'],
   ['Prazo após intimação','20 dias para solicitar análise. Ciência tácita: 15 dias sem leitura do DT-e'],
+
+['Estudo BID — controle','Grupo controle (sem notificação): 0% de conformidade'],
+  ['Estudo BID — notificação simples','11% de conformidade'],
+  ['Estudo BID — com cálculo detalhado','22% de conformidade — dobra em relação à notificação simples'],
+  ['Efeito do cálculo detalhado','Aumenta conformidade, reduz desigualdade entre contribuintes com/sem contador; NÃO aumenta arrecadação total — contribuinte regulariza só o mínimo'],
+  ['Espontaneidade','Existe desde a identificação da malha ATÉ a ciência do TIF'],
+  ['Ciência tácita','15 dias sem leitura da DT-e — regra de leitura, NÃO equivale ao TIF'],
+  ['Opções de regularização','A: Retificação (exclui automaticamente); B: Declaração Complementar (exige PET posterior); C: Contestação'],
 ],
 alerts:[
   {type:'success',title:'✅ Resolução de malha — Fluxo',text:'1. Retificação da EFD (saída automática em ~12h) OU 2. Declaração Complementar via e-AGEAT + PET no SIATweb para exclusão manual OU 3. Contestação via PET se discordar'},
   {type:'info',title:'📌 Estudo BID — Conformidade',text:'Notificação com cálculo detalhado da divergência: 22% de conformidade. Notificação simples: 11%. Grupo controle: 0%. O detalhe DOBRA a conformidade!'},
-]},
 
-{id:9,emoji:'🗂️',color:'#06b6d4',title:'DF-e Aprofundado',qrange:[40,47],
-keyPoints:[
-  ['Linha do tempo','NF-e (2005) → CT-e (2007) → MDF-e (2010) → NFC-e (2011) → BP-e (2017) → DCe (2026)'],
-  ['Relação DF-e','NF-e (Mod. 55) → venda/mercadoria | CT-e (Mod. 57) → transporte de cargas | MDF-e (Mod. 58) → operação logística'],
-  ['CRT 1','Simples Nacional'],['CRT 2','Simples Nacional — excesso de sublimite'],
-  ['CRT 3','Regime Normal'],['CRT 4','MEI'],
-  ['CST — 1º dígito','Origem: 0=Nacional; 1/2=Estrangeira direta/indireta'],
-  ['CST — 2º e 3º dígitos','00=Tributada integral · 40=Isenta · 41=Não tributada · 51=Diferimento'],
-  ['CT-e tpServ=0 (Normal)','Usar campo infDoc (chave da NF-e)'],
-  ['CT-e tpServ=2,4','Usar campo docAnt (chaves de CT-e anteriores)'],
-  ['MDF-e — Quantidade','Um MDF-e por UF de DESCARREGAMENTO (pode ≠ UF destino final)'],
-  ['MDF-e — Obrigados','Emitente de CT-e · Emitente de NF-e com veículo próprio/TAC · Destinatário responsável'],
-  ['MDF-e — Inclusão condutor','APENAS modal rodoviário; até 10 condutores'],
-  ['MDF-e — Inclusão DF-e','Só para operação INTERNA na UF'],
-  ['MDF-e pendente','Bloqueia novo MDF-e para o mesmo par UF/veículo'],
-  ['Subcontratação e MDF-e','Obrigação de quem EFETIVAMENTE realiza o transporte (transportadora subcontratada)'],
-],
-alerts:[
-  {type:'warning',title:'⚠️ Eventos por tipo',text:'Modificadores: alteram o documento (ex: Cancelamento). Informativos: não alteram (ex: Carta de Correção, Registro de Passagem)'},
-  {type:'info',title:'📌 CT-e — Tipos de serviço',text:'0=Normal · 1=Subcontratação · 2=Redespacho · 3=Redespacho Intermediário · 4=Multimodal'},
+{type:'warning',title:'⚠️ TIF encerra a espontaneidade',text:'A espontaneidade termina com a ciência do TIF (Termo de Início de Fiscalização). Enquanto não há TIF, o contribuinte pode retificar, pagar à vista ou parcelar com redução de multa.'},
+  {type:'info',title:'📌 BID — o que dobrou',text:'A notificação com cálculo detalhado dobrou a taxa de conformidade (11% → 22%). Mas NÃO aumentou a arrecadação total.'},
 ]},
 
 {id:10,emoji:'📝',color:'#3b82f6',title:'Simulado Oficial — 30Q',qrange:[48,77],
@@ -525,10 +621,87 @@ keyPoints:[
   ['DIFAL fórmula','ICMS_DIFAL = [(V_oper − ICMS_Origem) / (1 − Al_Interna)] × Diferença_AL'],
   ['Alíquota efetiva (por dentro)','Al_EF = Al_N ÷ (1 − Al_N) | Ex.: 20% → 0,2÷0,8 = 25%'],
   ['Diferença_AL no DIFAL','Al_Interna destino − Al_Interestadual'],
+
+['Alíquota efetiva (por dentro)','Al_EF = Al_N ÷ (1 − Al_N) | Ex.: 25% → 0,25÷0,75 = 33,33%'],
+  ['Seguro e frete CIF','Cobrados pelo vendedor e incluídos na nota → INTEGRAM a BC do ICMS'],
+  ['Frete FOB','Pago diretamente pelo destinatário ao transportador → NÃO integra a BC'],
+  ['Frete FOB na Antecipação Parcial','EXCEÇÃO: o frete FOB INTEGRA a base da Antecipação Parcial (regra específica do trânsito)'],
+  ['Desconto incondicional','Expresso no documento fiscal → NÃO integra a BC'],
+  ['Desconto condicional','Condição futura (ex.: pagamento antecipado) → INTEGRA a BC'],
+  ['IPI — destinatário não contribuinte','IPI integra a BC do ICMS quando destinatário é consumidor final não contribuinte do IPI'],
 ],
 alerts:[
   {type:'info',title:'📌 Exemplo DIFAL — Q132',text:'V_oper=10.000 · Al_Inter=7% · Al_Interna=22,5% · Diferença=15,5% | ICMS_Origem=700 | DIFAL=[(10.000−700)÷0,775]×0,155 = 12.000×0,155 = R$1.860,00'},
   {type:'warning',title:'⚠️ Exemplo BC — Q133 (FCC 2015)',text:'Produto R$80.000 + Juros R$1.600 + IPI R$8.160 (não contribuinte) = R$89.760 | Frete FOB R$1.000 NÃO integra | Desconto condicional R$300 NÃO deduz'},
+
+{type:'info',title:'📌 Alíquota efetiva — cálculo por dentro',text:'25% por dentro: 0,25 ÷ 0,75 = 33,33%. O imposto representa 25% do preço com imposto incluído, mas 33,33% do preço sem imposto.'},
+  {type:'warning',title:'⚠️ Frete FOB: regra geral vs. Antecipação Parcial',text:'Regra geral de BC do ICMS: frete FOB NÃO integra. Na Antecipação Parcial (trânsito): frete FOB SIM integra (regra especial expressa). Não confundir!'},
+]},
+
+{id:26,emoji:'🚛',color:'#f97316',title:'Cobranças Antecipadas no Trânsito',qrange:[164,173],
+keyPoints:[
+  ['Hierarquia documentos (Regime Especial)','MDF-e > CT-e > NF-e; central processa somente MDF-e interestaduais de ENTRADA'],
+  ['Exclusão do Regime Especial','Transportadora que entregar sem quitação prévia: recolhe com acréscimos + multa + pode ser excluída'],
+  ['CVI — situações','ST sem retenção, MEI, Comércio Eventual, DIFAL E-commerce não recolhido'],
+  ['CVI — NUNCA gerar quando','Contribuinte REGULAR + cobrança de ANTECIPAÇÃO PARCIAL → liberar'],
+  ['Antecipação Parcial — fórmula','V_produto × (Al_interna − Al_interestadual); inclui Frete FOB; exclui IPI e desconto incondicional'],
+  ['DIFAL Contribuinte — fórmula','[(V_oper − ICMS_origem) / (1 − Al_interna)] × Al_interna − (V_oper × Al_inter) — Base Dupla'],
+  ['ST — fórmula','Débito=(V+FreteFOB+IPI+Desp+MVA)×Al_interna; Crédito=V×Al_inter; Desconto NÃO interfere'],
+  ['Comércio Eventual','(V_mercad + MVA) × Al_interna — contribuinte não inscrito com habitualidade'],
+  ['Irregularidades','Aplica MVA adicional de 30%'],
+  ['Liberação — situações','Regular+Antecipação Parcial; isento/imune; suspensão; Al_interna=Al_inter; GNRE recolhida; ST regular com destaque'],
+],
+alerts:[
+  {type:'info',title:'📌 Alíquotas internas PI (Lei 4.257/89)',text:'Isento=Cesta Básica | 7%=carga reduzida | 12%=Informática+Transporte Aéreo | 22,5%=Confecções | 27%=Joias/Bijuterias/Perfumes | 27%+2%FECOP=Bebidas Alcoólicas | 33%=Armas/Explosivos | 33%+2%FECOP=Fumo'},
+  {type:'warning',title:'⚠️ MEI no trânsito = CVI',text:'MEI como destinatário de mercadorias NÃO é situação de liberação — é situação de CVI. Não confundir com a regra do CAGEP (MEI só ISSQN não precisa de IE).'},
+]},
+
+{id:27,emoji:'📋',color:'#d946ef',title:'Status NF-e / CVI × DAR × DAR PF',qrange:[174,178],
+keyPoints:[
+  ['Status NOVA','NF-e cobrada + MDF-e ainda NÃO processado → exige maior atenção do agente'],
+  ['Status LIBERADA','Nota tratada, imposto pago, mercadoria liberada para entrega ao destinatário'],
+  ['Status RETIDA','CVI ou DAR PF emitido → mercadoria NÃO pode ser entregue'],
+  ['CVI','Por irregularidade fiscal; inclui multa; gera status RETIDA; emitido pelo SISAT'],
+  ['DAR','Arrecadação normal (situação regular); sem multa; após pagamento → status LIBERADA'],
+  ['DAR PF','Emitido pelo agente fiscal presencialmente no posto; gera status RETIDA até o pagamento'],
+  ['Prazo DAR (transportadora conveniada)','Antecipação Parcial e ST: até o dia 15 do mês subsequente à entrada das mercadorias no PI'],
+  ['Após pagamento do DAR (regular)','Status → LIBERADA'],
+],
+alerts:[
+  {type:'info',title:'📌 CVI × DAR × DAR PF — diferenças essenciais',text:'CVI = irregularidade + multa + RETIDA. DAR = regular + sem multa + LIBERADA após pgt. DAR PF = agente no posto + RETIDA até pgt. A natureza do CVI é punitiva; a do DAR é meramente arrecadatória.'},
+  {type:'warning',title:'⚠️ NOVA ≠ LIBERADA',text:'Status NOVA indica que a NF-e foi cobrada mas o MDF-e AINDA NÃO foi processado — NÃO significa que foi liberada. É o status de maior atenção para o agente fiscal.'},
+]},
+
+{id:28,emoji:'🚔',color:'#14b8a6',title:'COFIT — Coord. de Fiscalização Itinerante',qrange:[179,188],
+keyPoints:[
+  ['Base legal COFIT','Portaria SEFAZ-PI Nº 5/2020; infrações: Art. 64, Lei 4.257/89 c/c Art. 178 do RICMS'],
+  ['Estrutura','10 Regiões Fiscais | 2 AFTE + 1 PM por unidade | Plantões quinzenais (15 dias serviço / 15 folga)'],
+  ['Infrações — 6 tipos','Falta de Documentação · Desvio de Rota · Clandestinidade · Fuga e Embaraço · Prazos · Fraude e MDF-e'],
+  ['Protocolo de abordagem (4 etapas)','(1) Seleção do Local → (2) Sinalização Visível (girofar) → (3) Interação Base → (4) Apoio Policial'],
+  ['Fluxo de irregularidade','Levantamento de Estoque → Relatório de Ocorrência → NFA-e (pagou) ou TR (não pagou)'],
+  ['Assinaturas','Relatório de Ocorrência = só o Agente. Levantamento de Estoque = Agente + Contribuinte'],
+  ['App Blitz SEFAZ','Núcleo tático; registro OCR/placa; consulta MDF-e/NF-e/CT-e; formulários COFIT; funciona OFFLINE'],
+  ['SISAT/SIAT Web','Retaguarda estratégica (backoffice): Passe Fiscal, NFA-e, consulta CCC'],
+  ['SINESP+/Alerta Brasil','Segurança e inteligência: CAD Equipes, alertas de cargas, varredura nacional de veículos'],
+  ['Anexos Dec. 21.866/2023','Anexo III = margens de lucro por atividade. Anexo VI = Obrigações Acessórias (base dos formulários COFIT)'],
+],
+alerts:[
+  {type:'info',title:'📌 App Blitz ≠ SISAT',text:'App Blitz = campo (offline, OCR de placa, formulários). SISAT = backoffice (Passe Fiscal, NFA-e, CCC). Não confundir as atribuições de cada sistema.'},
+  {type:'warning',title:'⚠️ Fraude e MDF-e — detalhe crítico',text:'MDF-e com status ENCERRADO em circulação = Fraude e MDF-e. Também se aplica a MDF-e cancelado ou ausente. Estabelecimento sem registro = Clandestinidade (infração diferente).'},
+]},
+
+{id:29,emoji:'🏠',color:'#ec4899',title:'ITCMD — Herança e Doação',qrange:[189,189],
+keyPoints:[
+  ['Fato gerador','Transmissão causa mortis (herança/legado) ou doação de quaisquer bens ou direitos'],
+  ['Meação não tributada','A meação é direito próprio do cônjuge — não é transmissão gratuita, portanto não incide ITCMD'],
+  ['Excesso de meação','Quando um cônjuge recebe mais do que sua meação ideal, o excesso é considerado doação → fato gerador do ITCMD'],
+  ['BC excesso na partilha','Diferença entre o valor recebido e o valor da meação ideal de cada cônjuge'],
+  ['Competência','Estado do domicílio do doador (doação de bem móvel) ou estado onde se processa o inventário/arrolamento (bem imóvel)'],
+  ['Distinção ITCMD/ICMS','ITCMD = transmissão gratuita de bens. ICMS = operação de circulação de mercadorias (onerosamente). Partilha no divórcio ≠ circulação comercial.'],
+],
+alerts:[
+  {type:'warning',title:'⚠️ Meação vs. Excesso de Meação',text:'Meação ideal = metade do patrimônio comum. Receber exatamente a meação = sem ITCMD. Receber mais que a meação = excesso é doação → ITCMD sobre o excesso.'},
+  {type:'info',title:'📌 Exemplo — Q da prova',text:'Patrimônio R$900k (casa R$500k + apto R$400k). Meação = R$450k cada. Maria fica com a casa (R$500k) → excesso = R$50k → ITCMD sobre R$50k.'},
 ]},
 ];
 
@@ -592,14 +765,14 @@ const QUESTIONS = [
 {block:8,text:"Com base no estudo BID com empresas do Simples Nacional no Piauí, qual abordagem de notificação gerou a maior taxa de conformidade?",opts:["Não notificar — o contribuinte se regulariza espontaneamente","Notificação simples, sem detalhamento do valor","Notificação com cálculo detalhado do valor da divergência identificada pela malha","Notificação acompanhada de Auto de Infração imediato"],correct:2,exp:"A notificação com cálculo detalhado alcançou 22% de conformidade, contra 11% da notificação simples e 0% do grupo controle. O detalhamento dobra a conformidade."},
 
 // Q40-47 DF-e Aprofundado
-{block:9,text:"O contribuinte imprimiu o DANFE e está utilizando como documento fiscal. É correto afirmar:",opts:["O DANFE é o documento fiscal; o XML é apenas o arquivo de transmissão","Ambos (XML e DANFE) têm igual validade como documentos fiscais","O XML autorizado é o documento fiscal; o DANFE é apenas representação auxiliar impressa","O DANFE substitui o XML quando assinado pelo emitente"],correct:2,exp:"O DF-e tem existência exclusivamente digital. O XML com assinatura digital e autorização da SEFAZ é o documento real. O DANFE (papel) é auxiliar e não tem valor de documento fiscal."},
-{block:9,text:"Uma NF-e emitida por contribuinte enquadrado como MEI deve ter qual valor no campo CRT?",opts:["CRT = 1","CRT = 2","CRT = 3","CRT = 4"],correct:3,exp:"O CRT = 4 corresponde ao MEI (Microempreendedor Individual). CRT 1 = Simples Nacional, CRT 2 = Simples excesso de sublimite, CRT 3 = Regime Normal."},
-{block:9,text:"Sobre os eventos de uma NF-e, qual a diferença entre eventos modificadores e informativos?",opts:["Modificadores são registrados pelo Fisco; informativos, pelo emitente","Modificadores alteram a situação do documento (ex: cancelamento); informativos não alteram (ex: Carta de Correção)","Modificadores exigem nova emissão da NF-e; informativos, não","Informativos têm prazo de 180 dias; modificadores não têm prazo"],correct:1,exp:"Modificadores alteram a situação do documento (ex: cancelamento torna a NF-e inválida). Informativos registram uma ocorrência sem alterar o documento (ex: CC-e mantém a NF-e válida)."},
-{block:9,text:"Um CT-e de Subcontratação é emitido quando:",opts:["Uma transportadora realiza apenas o trecho intermediário da rota","O contratante original repassa o transporte para outra transportadora executar apenas o trecho final","A transportadora contratada subcontrata outra para executar o trajeto completo, por não poder honrar o compromisso","Dois modais diferentes são utilizados no mesmo transporte"],correct:2,exp:"Na subcontratação, a 2ª transportadora faz o trajeto inteiro (origem ao destino). No redespacho, ela faz apenas o trecho restante. O tomador no CT-e de subcontratação é a transportadora contratante."},
-{block:9,text:"No CT-e, qual campo técnico deve ser utilizado quando o tpServ for igual a 0 (Normal) para referenciar os documentos fiscais da carga?",opts:["docAnt — referência a CT-e anteriores","infDoc — referência às chaves das NF-e","infNFe — campo exclusivo de redespacho","refCTe — campo de substituição"],correct:1,exp:"Quando o serviço é Normal (tpServ=0), o CT-e deve referenciar os documentos fiscais da carga no campo infDoc (chaves das NF-e). O campo docAnt é utilizado em redespacho e multimodal."},
-{block:9,text:"Sobre o MDF-e, qual é a regra de quantidade por emissão?",opts:["Um MDF-e por veículo, independentemente da rota","Um MDF-e por UF de destino final das mercadorias","Um MDF-e por UF de descarregamento (que pode ser diferente da UF de destino final)","Um MDF-e por NF-e transportada"],correct:2,exp:"A regra é um MDF-e por UF de descarregamento — que pode ser diferente da UF de destino final da mercadoria."},
-{block:9,text:"Um motorista com MDF-e ativo precisa incluir um novo condutor na viagem. Sobre esse evento do MDF-e:",opts:["É possível incluir condutores em qualquer modal de transporte","O evento de inclusão de condutor é permitido apenas no modal rodoviário e admite até 10 condutores","Não é possível incluir condutor após a emissão do MDF-e; é necessário cancelar e emitir novo","O evento pode ser registrado após o encerramento do MDF-e"],correct:1,exp:"O evento de Inclusão de Condutor é exclusivo do modal rodoviário e permite incluir até 10 condutores durante a viagem, sem cancelar e reemitir o MDF-e."},
-{block:9,text:"Um transportador finalizou a entrega e não encerrou o MDF-e. Qual a consequência direta?",opts:["Nenhuma; o encerramento é opcional","O MDF-e é encerrado automaticamente após 24 horas","O MDF-e pendente bloqueia a emissão de novo MDF-e para o mesmo par UF/veículo","O contribuinte recebe auto de infração imediato"],correct:2,exp:"O encerramento do MDF-e é obrigatório ao fim do trajeto. Um MDF-e pendente de encerramento bloqueia a emissão de novo MDF-e para o mesmo par UF/veículo."},
+{block:3,text:"O contribuinte imprimiu o DANFE e está utilizando como documento fiscal. É correto afirmar:",opts:["O DANFE é o documento fiscal; o XML é apenas o arquivo de transmissão","Ambos (XML e DANFE) têm igual validade como documentos fiscais","O XML autorizado é o documento fiscal; o DANFE é apenas representação auxiliar impressa","O DANFE substitui o XML quando assinado pelo emitente"],correct:2,exp:"O DF-e tem existência exclusivamente digital. O XML com assinatura digital e autorização da SEFAZ é o documento real. O DANFE (papel) é auxiliar e não tem valor de documento fiscal."},
+{block:3,text:"Uma NF-e emitida por contribuinte enquadrado como MEI deve ter qual valor no campo CRT?",opts:["CRT = 1","CRT = 2","CRT = 3","CRT = 4"],correct:3,exp:"O CRT = 4 corresponde ao MEI (Microempreendedor Individual). CRT 1 = Simples Nacional, CRT 2 = Simples excesso de sublimite, CRT 3 = Regime Normal."},
+{block:3,text:"Sobre os eventos de uma NF-e, qual a diferença entre eventos modificadores e informativos?",opts:["Modificadores são registrados pelo Fisco; informativos, pelo emitente","Modificadores alteram a situação do documento (ex: cancelamento); informativos não alteram (ex: Carta de Correção)","Modificadores exigem nova emissão da NF-e; informativos, não","Informativos têm prazo de 180 dias; modificadores não têm prazo"],correct:1,exp:"Modificadores alteram a situação do documento (ex: cancelamento torna a NF-e inválida). Informativos registram uma ocorrência sem alterar o documento (ex: CC-e mantém a NF-e válida)."},
+{block:3,text:"Um CT-e de Subcontratação é emitido quando:",opts:["Uma transportadora realiza apenas o trecho intermediário da rota","O contratante original repassa o transporte para outra transportadora executar apenas o trecho final","A transportadora contratada subcontrata outra para executar o trajeto completo, por não poder honrar o compromisso","Dois modais diferentes são utilizados no mesmo transporte"],correct:2,exp:"Na subcontratação, a 2ª transportadora faz o trajeto inteiro (origem ao destino). No redespacho, ela faz apenas o trecho restante. O tomador no CT-e de subcontratação é a transportadora contratante."},
+{block:3,text:"No CT-e, qual campo técnico deve ser utilizado quando o tpServ for igual a 0 (Normal) para referenciar os documentos fiscais da carga?",opts:["docAnt — referência a CT-e anteriores","infDoc — referência às chaves das NF-e","infNFe — campo exclusivo de redespacho","refCTe — campo de substituição"],correct:1,exp:"Quando o serviço é Normal (tpServ=0), o CT-e deve referenciar os documentos fiscais da carga no campo infDoc (chaves das NF-e). O campo docAnt é utilizado em redespacho e multimodal."},
+{block:3,text:"Sobre o MDF-e, qual é a regra de quantidade por emissão?",opts:["Um MDF-e por veículo, independentemente da rota","Um MDF-e por UF de destino final das mercadorias","Um MDF-e por UF de descarregamento (que pode ser diferente da UF de destino final)","Um MDF-e por NF-e transportada"],correct:2,exp:"A regra é um MDF-e por UF de descarregamento — que pode ser diferente da UF de destino final da mercadoria."},
+{block:3,text:"Um motorista com MDF-e ativo precisa incluir um novo condutor na viagem. Sobre esse evento do MDF-e:",opts:["É possível incluir condutores em qualquer modal de transporte","O evento de inclusão de condutor é permitido apenas no modal rodoviário e admite até 10 condutores","Não é possível incluir condutor após a emissão do MDF-e; é necessário cancelar e emitir novo","O evento pode ser registrado após o encerramento do MDF-e"],correct:1,exp:"O evento de Inclusão de Condutor é exclusivo do modal rodoviário e permite incluir até 10 condutores durante a viagem, sem cancelar e reemitir o MDF-e."},
+{block:3,text:"Um transportador finalizou a entrega e não encerrou o MDF-e. Qual a consequência direta?",opts:["Nenhuma; o encerramento é opcional","O MDF-e é encerrado automaticamente após 24 horas","O MDF-e pendente bloqueia a emissão de novo MDF-e para o mesmo par UF/veículo","O contribuinte recebe auto de infração imediato"],correct:2,exp:"O encerramento do MDF-e é obrigatório ao fim do trajeto. Um MDF-e pendente de encerramento bloqueia a emissão de novo MDF-e para o mesmo par UF/veículo."},
 
 // Q48-77 Simulado Oficial
 {block:10,text:"Conforme a LC 62/2005, a lavratura de termo de apreensão e a fiscalização do trânsito de mercadorias em unidades fixas ou móveis competem a qual carreira?",opts:["Auditor Fiscal da Fazenda Estadual (AFFE)","Agente de Tributos da Fazenda Estadual (AFTE)","Analista do Tesouro Estadual (ATE)","Auditor Governamental"],correct:1,exp:"O art. 8º da LC 62/2005 atribui ao AFTE a fiscalização do trânsito de mercadorias e a lavratura do termo de apreensão — atividades de complexidade e responsabilidade médias."},
@@ -698,6 +871,149 @@ const QUESTIONS = [
 // Q132-133 Base de Cálculo ICMS e DIFAL
 {block:15,text:"A empresa Alfa, correntista normal sediada em São Paulo, vendeu mercadorias no valor de R$10.000,00 a um não contribuinte do ICMS domiciliado em Teresina–PI. A alíquota interna no destino é de 22,5% e a alíquota interestadual é de 7%. Calcule o valor do ICMS DIFAL a ser recolhido ao Estado do Piauí. Fórmula: ICMS_DIFAL = [(V_oper − ICMS_Origem) / (1 − Al_Interna)] × Diferença_AL",opts:["R$1.240,00","R$1.550,00","R$1.860,00","R$2.250,00"],correct:2,exp:"Diferença_AL = 22,5% − 7% = 15,5% | ICMS_Origem = 10.000 × 7% = R$700 | DIFAL = [(10.000 − 700) / (1 − 0,225)] × 0,155 = [9.300 / 0,775] × 0,155 = 12.000 × 0,155 = R$1.860,00"},
 {block:15,text:"(FCC – SEFAZ-PI – AFFE – 2015) A Indústria Amauri Jucá fabricou equipamento pirotécnico por R$80.000,00, acrescendo juros de R$1.600,00 e IPI de R$8.160,00. Total da NF: R$89.760,00. O frete foi R$1.000,00 por conta e ordem do destinatário (FOB). No pagamento da duplicata, houve desconto de R$300,00 por pagamento antecipado (desconto condicional). O destinatário é Banda Xenhenhem — não contribuinte do IPI. Qual é a base de cálculo do ICMS?",opts:["R$89.460,00","R$80.000,00","R$89.760,00","R$88.160,00"],correct:2,exp:"Produto R$80.000 + Juros R$1.600 (encargo incluso na NF = integra) + IPI R$8.160 (destinatário não contribuinte do IPI = integra) = R$89.760. Frete FOB R$1.000 NÃO integra (por conta do destinatário). Desconto condicional R$300 NÃO deduz (condição futura e incerta)."},
+
+// Q134-136 Reforma Tributária — Aprofundamento
+{block:0,text:"Sobre o Imposto Seletivo (IS) criado pela Reforma Tributária, assinale a alternativa correta:",opts:["Substitui o IPI e incide sobre todos os produtos industrializados de forma cumulativa","Incide sobre bens e serviços considerados prejudiciais à saúde ou ao meio ambiente, como tabaco, bebidas alcoólicas e veículos poluentes","Tem alíquota única de 15% para todos os produtos sujeitos à sua incidência","É de competência exclusiva dos Estados, cabendo ao CGIBS apenas a homologação"],correct:1,exp:"O IS é um tributo federal extrafiscal que incide sobre bens e serviços nocivos à saúde e ao meio ambiente (tabaco, bebidas alcoólicas, veículos e embarcações poluentes, produtos com alto teor de açúcar etc.). Não substitui o IPI e não tem alíquota única."},
+{block:0,text:"Sobre os setores com alíquota reduzida no IBS e na CBS, assinale a alternativa correta:",opts:["Serviços financeiros, seguros e planos de saúde têm redução de 60% na alíquota de referência","Serviços de streaming e plataformas digitais têm redução de 60% por se tratar de economia digital","Saúde, educação, medicamentos, dispositivos médicos, transporte coletivo e alimentos da cesta básica ampliada têm redução de 60% na alíquota","Todas as atividades rurais têm redução de 60%, independentemente do porte do produtor"],correct:2,exp:"Os setores com redução de 60% incluem saúde, educação, medicamentos, dispositivos médicos, transporte coletivo de passageiros, produções artístico-culturais e alimentos da cesta básica ampliada. Serviços financeiros têm redução de 30%, não 60%."},
+{block:0,text:"No sistema não cumulativo do IBS e da CBS, o contribuinte tem direito a:",opts:["Crédito apenas nas aquisições de insumos diretos para produção, vedado o creditamento de despesas gerais","Crédito amplo correspondente ao IBS e CBS pagos em todas as etapas anteriores da cadeia, compensável com o imposto devido nas saídas","Crédito limitado a 12% do valor das aquisições, independentemente do imposto efetivamente pago","Crédito somente após autorização específica do Comitê Gestor para cada período de apuração"],correct:1,exp:"O sistema não cumulativo do IBS/CBS garante crédito amplo: todo IBS e CBS pago nas etapas anteriores pode ser aproveitado para compensar o imposto devido nas saídas — eliminando o efeito cascata do atual sistema."},
+
+// Q137-141 EFD — Aprofundamento
+{block:1,text:"Sobre a obrigatoriedade e prazo de entrega da EFD ICMS/IPI no Piauí, assinale a alternativa correta:",opts:["O SIMEI (MEI) é obrigado a entregar a EFD mensalmente, até o dia 15 do mês seguinte","O prazo de entrega é até o 20º dia do 2º mês subsequente ao período de referência, e o SIMEI está dispensado da obrigação","Empresas inativas devem entregar a EFD com todos os campos em branco, sem estrutura de registros","A EFD substitui a DIEF mas não a DIMP, que continua sendo entregue separadamente"],correct:1,exp:"O prazo é o 20º dia do 2º mês após o período de referência. O SIMEI está dispensado da EFD. Empresas inativas entregam com E100 e E110 zerados (não em branco). A EFD, no Piauí, é a declaração fiscal exclusiva desde 2021."},
+{block:1,text:"Sobre os blocos da EFD ICMS/IPI e suas finalidades, assinale a correspondência correta:",opts:["Bloco C: controle de crédito do ativo imobilizado (CIAP); Bloco G: documentos fiscais","Bloco E: apuração do ICMS e do IPI; Bloco H: inventário do estoque","Bloco H: apuração do ICMS ST; Bloco K: controle de crédito do ativo imobilizado","Bloco G: obrigações a recolher; Bloco E: identificação do contribuinte"],correct:1,exp:"Bloco C = documentos fiscais (NF-e etc.); Bloco E = apuração do ICMS/IPI; Bloco G = CIAP (controle crédito ativo imobilizado); Bloco H = inventário; Bloco K = controle de produção."},
+{block:1,text:"Sobre os códigos de ajuste do Piauí na EFD, qual combinação representa corretamente a Antecipação Parcial?",opts:["PI020001 (crédito) + PI050001 (débito) — valores obrigatoriamente iguais","PI020004 (crédito) + PI050006 (débito especial) — valores obrigatoriamente iguais","PI020002 (crédito) + PI050002 (débito) — correspondentes ao DIFAL de contribuinte","PI040003 (dedução) + PI050010 (débito especial) — correspondentes ao FECOP"],correct:1,exp:"Antecipação Parcial = PI020004 + PI050006, com valores iguais (inconsistência de integridade se divergirem em ≥ R$100). A = Antecipação Total; C = DIFAL contribuinte; D = FECOP."},
+{block:1,text:"Um contribuinte piauiense tem saídas sujeitas ao FECOP. Qual a escrituração correta no Bloco E da EFD?",opts:["Lançar apenas PI050010 (débito especial) no E111, dispensando o lançamento de dedução correspondente","Lançar PI040003 (dedução) e PI050010 (débito especial) no E111, com o valor a recolher amarrado no E116 com os códigos de obrigação e receita adequados","Lançar os valores do FECOP diretamente no E110 como ajuste global, sem segregação no E111","Registrar no Bloco H como ajuste de inventário, pois o FECOP não impacta o Bloco E"],correct:1,exp:"O FECOP exige lançamentos segregados: PI040003 (dedução) + PI050010 (débito especial) no E111, com a obrigação de recolhimento correspondente no E116. O par deve ser lançado com os códigos e valores corretos para evitar inconsistência de integridade."},
+{block:1,text:"Uma empresa piauiense não realizou nenhuma operação em determinado período. Como deve proceder em relação à EFD?",opts:["Está dispensada de transmitir, pois a EFD só é obrigatória quando há movimento fiscal","Deve transmitir normalmente com o registro E100 abrindo o período e o E110 com todos os valores zerados","Deve transmitir apenas o Bloco 0 e o Bloco 9, sem os blocos de documentos fiscais","Deve solicitar à SEFAZ autorização especial para entrega em branco via PET"],correct:1,exp:"EFD sem movimento = transmissão normal com E100 (abertura do período) e E110 com valores zerados. Nunca campos em branco. Omitir a entrega sujeita o contribuinte a situação de omisso."},
+
+// Q142-144 CAGEP — Aprofundamento
+{block:2,text:"Sobre a estrutura do Cadastro de Contribuintes do Estado do Piauí (CAGEP), é correto afirmar:",opts:["Uma empresa com dois estabelecimentos no Piauí pode registrar ambos sob uma única Inscrição Estadual","Cada estabelecimento do mesmo grupo empresarial deve possuir sua própria Inscrição Estadual, sendo vedado o compartilhamento de IE entre unidades distintas","A Inscrição Estadual é dispensada para estabelecimentos que realizem exclusivamente operações isentas de ICMS","O prazo para inscrição no CAGEP é de 90 dias após o início das atividades"],correct:1,exp:"Cada estabelecimento (matriz e filiais) possui IE própria e independente. O CNPJ pode ser o mesmo, mas a IE é sempre por estabelecimento. Operações isentas não dispensam a obrigação de inscrição."},
+{block:2,text:"Sobre a suspensão a pedido da Inscrição Estadual no CAGEP, é correto afirmar:",opts:["É concedida por prazo indeterminado e pode ser reativada a qualquer tempo sem formalidades","É concedida pelo prazo de 180 dias; ao término, o contribuinte deve requerer formalmente a reativação ou prorrogação, sob pena de cancelamento de ofício pela SEFAZ","Suspende automaticamente a obrigatoriedade de entrega da EFD durante todo o período","Pode ser promovida de ofício pela SEFAZ quando o contribuinte estiver com parcelamento ativo"],correct:1,exp:"A suspensão a pedido tem prazo máximo de 180 dias. Findo o prazo sem requerimento de reativação ou prorrogação, a SEFAZ pode promover o cancelamento da inscrição."},
+{block:2,text:"Um Microempreendedor Individual (MEI) que realiza exclusivamente serviços de eletricista, sujeitos ao ISSQN municipal. Em relação ao CAGEP, esse MEI:",opts:["É obrigado a se inscrever no CAGEP e entregar a EFD mensalmente","Não necessita de Inscrição Estadual no CAGEP, pois suas atividades não são tributadas pelo ICMS","Deve se inscrever no CAGEP, mas fica dispensado da entrega da EFD","É obrigado a emitir NF-e modelo 55 em sistema próprio para cada prestação de serviço"],correct:1,exp:"O MEI que exerce exclusivamente atividades sujeitas ao ISSQN (serviços municipais, sem circulação de mercadorias) não precisa de Inscrição Estadual no CAGEP, pois não pratica fatos geradores de ICMS. Quando o MEI comercializa mercadorias, aí sim é necessária a IE — e nesse caso deve usar NFA-e ou NFF, nunca NF-e em sistema próprio."},
+
+// Q145-148 Documentos Fiscais — Aprofundamento
+{block:3,text:"Em caso de falha na comunicação com a SEFAZ, o contribuinte pode emitir NF-e em contingência. Sobre as modalidades disponíveis, assinale a correta:",opts:["A contingência Offline está disponível tanto para NF-e modelo 55 quanto para NFC-e modelo 65","O EPEC (Evento Prévio de Emissão em Contingência) é registrado pelo emitente na SEFAZ Virtual antes de transmitir o XML da NF-e, garantindo validade à emissão","A SVC (SEFAZ Virtual de Contingência) permite emissão de NF-e por até 30 dias sem necessidade de posterior autorização","O FS-DA (Formulário de Segurança para Documentos Auxiliares) é exclusivo para NFC-e"],correct:1,exp:"O EPEC é registrado pelo emitente na SEFAZ Virtual antes da transmissão do XML, garantindo validade jurídica à NF-e emitida em contingência. A contingência Offline é exclusiva da NFC-e (não da NF-e modelo 55). O FS-DA é uma das modalidades para NF-e modelo 55."},
+{block:3,text:"No CT-e, qual a diferença entre EXPEDIDOR e REMETENTE?",opts:["São sinônimos — ambos designam quem envia a carga fisicamente ao transportador","Remetente é quem envia a carga na origem do transporte; Expedidor é quem efetivamente entrega a carga ao transportador em ponto intermediário, diferente da origem","Expedidor é sempre o destinatário final; Remetente é sempre o transportador contratante","Remetente é o responsável financeiro pelo frete; Expedidor é o responsável jurídico pelo conteúdo da carga"],correct:1,exp:"Remetente = ponto de partida original da carga. Expedidor = quem entrega efetivamente a carga ao transportador (pode ser diferente do remetente — ocorre, por exemplo, no redespacho). Destinatário é para quem a carga se destina ao final; Recebedor é quem efetivamente a recebe no destino."},
+{block:3,text:"A Nota Fiscal Avulsa Eletrônica (NFA-e) é disponibilizada pela SEFAZ-PI para situações específicas. Sobre suas regras, assinale a correta:",opts:["Pode ser emitida por qualquer contribuinte inscrito no CAGEP como alternativa à NF-e em contingência","É destinada ao MEI (SIMEI), pessoas físicas ou jurídicas não inscritas no CAGEP; a emissão para fins ilícitos gera responsabilidade civil e penal para o emitente","É emitida exclusivamente pelo Fisco, a pedido do contribuinte, mediante pagamento de taxa","Utiliza o modelo 65 (NFC-e) e não possui chave de acesso para consulta pública"],correct:1,exp:"A NFA-e (modelo 55) é destinada ao MEI, pessoas físicas e jurídicas não inscritas no CAGEP. Contribuinte inscrito (correntista) não pode usar a NFA-e — deve usar NF-e em sistema próprio ou, em contingência, os modos específicos de contingência. A emissão para fins ilícitos gera responsabilidade civil e penal."},
+{block:3,text:"A Carta de Correção Eletrônica (CC-e) pode sanar erros em campos da NF-e, exceto em alguns casos vedados. Qual erro NÃO pode ser corrigido por CC-e?",opts:["Descrição complementar do produto ou serviço","Dados do transportador ou do veículo","Valor unitário e quantidade do item, com reflexo no valor total e no ICMS destacado","Informações adicionais de interesse do Fisco (campo de observações)"],correct:2,exp:"A CC-e não pode corrigir dados que afetem os valores de impostos (base de cálculo, preço unitário, quantidade) nem dados de emitente/destinatário, data de emissão/saída ou dados da DU-E (exportação). Para esses campos, é necessário cancelar e reemitir a NF-e dentro do prazo."},
+
+// Q149-151 LC 62/2005 — Aprofundamento
+{block:4,text:"Sobre a estrutura de carreira e nomeação prevista na LC 62/2005, assinale a alternativa correta:",opts:["A nomeação ocorre na referência II-A, após a conclusão do curso de formação","A carreira é organizada em 4 classes (I, II, III e Especial), com 3 referências cada (A, B, C), e a nomeação se dá sempre na referência I-A","O Adicional de Remuneração Fazendário (ARF) é composto exclusivamente pela parcela por metas, disponível desde o primeiro dia de exercício","O incremento nominal do ARF é pago a todas as carreiras da SEFAZ-PI, incluindo a carreira AFC"],correct:1,exp:"A carreira tem 4 classes × 3 referências = 12 posições, sempre iniciando em I-A. O ARF é composto por parcela por Metas (disponível desde o início) e parcela por Arrecadação (após 3 meses). O incremento nominal é restrito ao grupo TAF (não ao AFC/ATE)."},
+{block:4,text:"Sobre os componentes do ARF (Adicional de Remuneração Fazendário), assinale a alternativa incorreta:",opts:["A parcela por Arrecadação só está disponível após 3 meses de efetivo exercício","O componente 'Multas' é exclusivo para os Agentes de Tributos da Fazenda Estadual (AFTE)","O componente 'Incremento Nominal' é restrito ao grupo TAF (AFFE e AFTE)","A parcela por Metas está disponível desde o início do exercício funcional"],correct:1,exp:"A alternativa está incorreta: o componente 'Multas' é exclusivo do AFFE — não do AFTE. O incremento nominal abrange todo o grupo TAF (AFFE + AFTE), mas as Multas são apenas para o AFFE."},
+{block:4,text:"De acordo com a LC 62/2005, um servidor não faz jus à progressão ou promoção caso, nas condições previstas em lei:",opts:["Tenha participado de curso de capacitação com mais de 200 horas-aula no período","Tenha faltado injustificadamente ao serviço nos últimos 12 meses, ou estado em licença para interesse particular no mesmo período, ou sofrido pena disciplinar (exceto advertência) nos últimos 2 anos","Tenha solicitado remoção para outra unidade da SEFAZ dentro do mesmo município","Tenha exercido atividade de magistério remunerada por até 8 horas semanais"],correct:1,exp:"As restrições incluem: falta injustificada (últimos 12 meses), licença para interesse particular (últimos 12 meses), pena disciplinar exceto advertência (últimos 2 anos), disponibilidade, mandato eletivo e não comprovar escolaridade de nível superior."},
+
+// Q152-153 LGPD — Aprofundamento
+{block:5,text:"A LGPD confere ao titular dos dados pessoais um conjunto de direitos perante o controlador. Dentre eles, não está previsto:",opts:["Acesso facilitado e gratuito às informações sobre o tratamento dos seus dados","Correção de dados incompletos, inexatos ou desatualizados","Indenização automática sem necessidade de comprovação de dano por qualquer tratamento realizado pelo poder público","Portabilidade dos dados a outro fornecedor de serviço ou produto"],correct:2,exp:"O direito à indenização existe na LGPD, mas não é automático nem independe de comprovação de dano. O titular precisa demonstrar o dano sofrido pelo tratamento irregular. As demais alternativas são direitos expressamente previstos (acesso, correção, portabilidade)."},
+{block:5,text:"São considerados dados pessoais sensíveis pela LGPD, exceto:",opts:["Dados referentes à saúde ou à vida sexual","Dados genéticos ou biométricos quando vinculados a uma pessoa natural","Dado sobre filiação a sindicato ou a organização de caráter religioso, filosófico ou político","Endereço residencial e número de telefone celular"],correct:3,exp:"Endereço e telefone são dados pessoais simples, não sensíveis. Dados sensíveis são aqueles sobre: origem racial/étnica, convicção religiosa, opinião política, filiação a sindicato/organização religiosa/filosófica/política, saúde/vida sexual, dados genéticos ou biométricos vinculados a pessoa natural."},
+
+// Q154-156 IPVA — Aprofundamento
+{block:6,text:"Sobre a base de cálculo do IPVA e a integração entre SEFAZ-PI e DETRAN, assinale a alternativa correta:",opts:["Para veículos novos e usados, a base de cálculo é sempre determinada pelo DETRAN com base no valor venal","Para veículos novos, a base de cálculo é o valor da Nota Fiscal Eletrônica; para veículos usados, é o valor apurado pela Tabela FIPE; o cadastro de veículos pertence ao DETRAN e a SEFAZ apenas replica","O cadastro de veículos pertence à SEFAZ-PI, que envia os dados ao DETRAN para fins de licenciamento","O DETRAN pode liberar o CRLV independentemente de débitos de IPVA junto à SEFAZ-PI"],correct:1,exp:"Veículo novo: BC = NF-e. Veículo usado: BC = FIPE. O cadastro pertence ao DETRAN, que o compartilha com a SEFAZ. O DETRAN só libera o CRLV após autorização da SEFAZ — havendo débito de IPVA, o CRLV não é liberado."},
+{block:6,text:"Sobre a isenção de IPVA para Pessoa com Deficiência (PcD), conforme nova redação da Lei 8.946/2026, assinale a alternativa correta:",opts:["Aplica-se exclusivamente a veículos especialmente adaptados, sem limite de valor de base de cálculo","Aplica-se a veículo de fabricação nacional, de propriedade de PcD (física, visual, auditiva, mental severa/profunda ou autista), limitado a um veículo por beneficiário, cuja base de cálculo não ultrapasse R$ 200.000,00 na data do fato gerador","Aplica-se a qualquer veículo, nacional ou importado, desde que o beneficiário comprove deficiência por laudo médico","Aplica-se a dois veículos por beneficiário, desde que um deles seja devidamente adaptado"],correct:1,exp:"A nova redação ampliou a isenção: não exige mais que o veículo seja especialmente adaptado. Condições: fabricação nacional, 1 veículo por beneficiário, BC ≤ R$200.000. Beneficiários: PcD física, visual, auditiva, mental severa/profunda e autistas."},
+{block:6,text:"Para que um motorista de aplicativo obtenha a isenção de IPVA prevista na Lei 8.946/2026, é necessário que, cumulativamente:",opts:["O veículo seja importado e o motorista esteja cadastrado na plataforma há pelo menos 6 meses","O veículo seja de fabricação nacional; o motorista esteja cadastrado na plataforma há pelo menos 10 meses; a atividade de aplicativo seja sua única fonte de renda; e comprove número mínimo de viagens pela plataforma","O veículo seja nacional ou importado e o motorista comprove renda inferior a 3 salários mínimos mensais","O motorista tenha mais de 21 anos e o veículo tenha menos de 5 anos de fabricação"],correct:1,exp:"São 4 condições cumulativas: (1) veículo de fabricação nacional; (2) cadastrado na plataforma há ≥ 10 meses; (3) atividade de aplicativo = única fonte de renda; (4) número mínimo de viagens comprovado pela plataforma. Faltando qualquer uma, não há isenção."},
+
+// Q157-159 CzRM — Aprofundamento
+{block:7,text:"Na fórmula do IEA (Índice de Eficiência do Atendimento), IEA = (TAPC + TAVC) / (TAPD + TAVD), o que significa TAVC?",opts:["Total de Atendimento Verificado e Confirmado","Total de Atendimento Virtual Concluído","Total de Atendimento Válido Categorizado","Total de Atendimento Verbal Concluso"],correct:1,exp:"TAPC = Total Atendimento Presencial Concluído; TAVC = Total Atendimento Virtual Concluído; TAPD = Total Atendimento Presencial Demandado; TAVD = Total Atendimento Virtual Demandado. Meta: 85%."},
+{block:7,text:"Um contribuinte informa ao atendente N1 que seu usuário no SIATWeb está bloqueado. De acordo com os procedimentos operacionais da SEFAZ-PI, o atendente deve:",opts:["Desbloquear diretamente pelo Portal Corporativo sem necessidade de encaminhamento","Solicitar ao contribuinte que envie print comprovando o bloqueio via 'Fale com a SEFAZ' e encaminhar para N2, que realizará o desbloqueio","Orientar o contribuinte a aguardar 24 horas para desbloqueio automático do sistema","Encerrar o ticket e orientar comparecimento presencial com documentos originais"],correct:1,exp:"Para usuário bloqueado no SIATWeb: N1 solicita print comprobatório e encaminha ao N2, que realiza o desbloqueio. Diferente do usuário 'não credenciado' (cadastro no SIAT Web não repercute no e-AGEAT), que vai para chamado na UNITEC."},
+{block:7,text:"Dúvidas técnicas sobre escrituração e código de ajuste do ICMS de Energia Elétrica e Comunicações na EFD devem ser encaminhadas para qual nível e responsável na estrutura CzRM da SEFAZ-PI?",opts:["N2 – GIEFI – Verônica Maria","N3 – UNIFIS/GEAUD-Energia – Luiz Gonzaga","N3 – UNIFIS/EFD – Luiz Riegel","N2 – COFIP – setor de inadimplência"],correct:1,exp:"ICMS de Energia Elétrica e Comunicações → N3 – UNIFIS/GEAUD-Energia (responsável: Luiz Gonzaga). Para dúvidas gerais de EFD/código de ajuste → N3 UNIFIS/EFD (Luiz Riegel). Para ICMS ST → N3 UNIFIS/GEAUD-SubstTrib (Rosana Leal)."},
+
+// Q160-161 Malhas Fiscais — Aprofundamento
+{block:8,text:"Sobre o estudo BID realizado com contribuintes do Simples Nacional no Piauí, qual foi a principal conclusão quanto ao impacto da notificação?",opts:["A autuação imediata é mais eficiente que a notificação prévia para garantir a conformidade fiscal","A notificação com cálculo detalhado do valor da divergência dobrou a taxa de conformidade (22%) em relação à notificação simples (11%), mas o cálculo detalhado não impactou a arrecadação total — o contribuinte regulariza apenas o mínimo necessário","A notificação simples gerou 22% de conformidade; com cálculo detalhado, chegou a 44%","O grupo controle (sem notificação) apresentou 15% de conformidade espontânea"],correct:1,exp:"Resultados: controle (0%), notificação simples (11%), notificação com cálculo detalhado (22%). O detalhe nos valores dobra a conformidade e reduz a desigualdade entre contribuintes com e sem contador. Porém, o cálculo detalhado não aumenta a arrecadação total — o contribuinte regulariza apenas o mínimo necessário."},
+{block:8,text:"Sobre o período de espontaneidade nas malhas fiscais da SEFAZ-PI, assinale a alternativa correta:",opts:["A espontaneidade inicia-se apenas após a ciência tácita da intimação (15 dias sem leitura) e encerra com o Auto de Infração","Enquanto não houver ciência do TIF (Termo de Início de Fiscalização), o contribuinte pode se autorregularizar espontaneamente — por retificação, pagamento à vista (DAR) ou Declaração Complementar com parcelamento — com benefícios de redução de multa","O período de espontaneidade é ilimitado para contribuintes com parcelamento ativo na SEFAZ","A ciência tácita da intimação equivale ao TIF e encerra automaticamente a espontaneidade"],correct:1,exp:"A espontaneidade existe desde a identificação da malha até a ciência do TIF. Enquanto não há TIF, o contribuinte pode retificar, pagar ou parcelar com benefício. O TIF encerra o período espontâneo. A ciência tácita (15 dias) é apenas a regra de leitura da intimação, não equivale ao TIF."},
+
+// Q162-163 Base de Cálculo ICMS — Aprofundamento
+{block:15,text:"Transforme a alíquota nominal de 25% em alíquota efetiva (cálculo por dentro), usando a fórmula Al_EF = Al_N / (1 − Al_N):",opts:["25,00%","28,50%","33,33%","30,00%"],correct:2,exp:"Al_EF = 0,25 / (1 − 0,25) = 0,25 / 0,75 = 0,3333 → 33,33%. Isso significa que em uma operação com alíquota de 25% por dentro, o imposto representa 25% do preço com imposto embutido, mas 33,33% do preço sem imposto."},
+{block:15,text:"Sobre os seguros e fretes na composição da base de cálculo do ICMS, assinale a alternativa correta:",opts:["Seguros nunca integram a BC do ICMS, pois são serviços acessórios de terceiros","Frete pago pelo destinatário (FOB) e frete pago pelo vendedor (CIF) integram igualmente a BC do ICMS","O seguro e o frete cobrados do adquirente pelo vendedor e constantes do valor da operação integram a BC do ICMS; o frete FOB pago diretamente pelo destinatário ao transportador não integra","O frete integra apenas quando realizado por transportadora piauiense; fretes interestaduais são excluídos da BC"],correct:2,exp:"Integram a BC: seguro e frete CIF (cobrados pelo vendedor e incluídos na nota). Não integram: frete FOB pago diretamente pelo comprador ao transportador (por conta e ordem do destinatário), pois não compõe o valor da operação do emitente."},
+
+// Q164-173 Cobranças Antecipadas no Trânsito
+{block:26,text:"Sobre o Regime Especial concedido a transportadoras conveniadas (Art. 75, Anexo VII, Dec. 21.866/2023), assinale a alternativa correta:",opts:["A hierarquia de documentos para cobrança é NFe > CTe > MDFe; a central processa MDFe interestaduais de saída","A hierarquia é CTe > MDFe > NFe; a transportadora que entregar sem quitação sofre apenas advertência","A hierarquia é MDFe > CTe > NFe; a central processa apenas MDFe interestaduais de entrada; transportadora que entregar sem quitação recolhe com acréscimos, multa e pode ser excluída do regime","A hierarquia é MDFe > NFe > CTe; a exclusão do regime ocorre apenas após decisão judicial"],correct:2,exp:"Hierarquia: MDFe > CTe > NFe. A central opera somente com MDFe interestaduais de entrada. A consequência para entrega sem quitação prévia é recolhimento com acréscimos + multa + possível exclusão do regime especial."},
+{block:26,text:"Sobre a CVI (Cobrança por Verificação de Irregularidade), assinale a alternativa correta:",opts:["A CVI deve ser gerada sempre que o contribuinte estiver irregular, inclusive em cobranças de antecipação parcial","A CVI se aplica a ST sem retenção, MEI, Comércio Eventual e DIFAL E-commerce não recolhido (Conv. 236/21); não deve ser gerada quando o contribuinte estiver regular e a cobrança for de antecipação parcial","A CVI é aplicada apenas para ST e DIFAL E-commerce, não alcançando MEI","A CVI substitui o GNRE em todas as situações de irregularidade fiscal"],correct:1,exp:"As quatro situações que geram CVI: (1) ST sem retenção ou a menor, (2) MEI, (3) Comércio Eventual, (4) DIFAL E-commerce não recolhido. A exceção expressa: contribuinte regular + antecipação parcial → não gerar CVI."},
+{block:26,text:"Sobre as alíquotas internas do ICMS no Piauí (Lei 4.257/89, art. 23), assinale a alternativa incorreta:",opts:["Produtos de informática (Anexo I do Dec. 21.866/2023) e transporte aéreo: 12%","Confecções (alíquota modal): 22,5%","Fumo e derivados (cigarros, cigarrilhas, charutos): 33% + 2% FECOP","Armas, munições, explosivos e fogos de artifício: 27% + 2% FECOP"],correct:3,exp:"Armas, munições, explosivos e fogos de artifício têm alíquota de 33% (sem FECOP). O 33% + 2% FECOP é exclusivo de fumo e derivados. O 27% + 2% FECOP é de bebidas alcoólicas."},
+{block:26,text:"A Antecipação Parcial (Art. 78, Dec. 21.866/2023) usa a fórmula: V_produto × (Al_interna − Al_interestadual). Sobre os elementos da base de cálculo, assinale a alternativa correta:",opts:["Inclui IPI e exclui desconto incondicional; frete FOB não é considerado","Exclui IPI e desconto incondicional; inclui o frete FOB na base de cálculo","Inclui IPI e frete FOB; exclui apenas desconto condicional","Inclui todos os encargos cobrados do destinatário, sem exclusões"],correct:1,exp:"Antecipação Parcial: a base inclui o Frete FOB mas exclui IPI e desconto incondicional. Diferente da ST, que inclui IPI na base do débito."},
+{block:26,text:"Sobre as duas modalidades de DIFAL cobradas no trânsito, assinale a correspondência correta entre fórmula, artigo e destinatário:",opts:["DIFAL E-Commerce usa Base Dupla; DIFAL Contribuinte usa a fórmula simples de diferença de alíquotas","DIFAL Contribuinte (uso/consumo/ativo, Art. 28): Base Dupla — [(V_oper − ICMS_origem) / (1 − Al_interna)] × Al_interna − (V_oper × Al_inter); DIFAL E-Commerce (não contribuinte, Art. 29 / Conv. ICMS 236/21): V_BC × (Al_interna − Al_inter)","Ambas utilizam a mesma fórmula de diferença de alíquotas","DIFAL Contribuinte: V_prod × Al_interna; DIFAL E-Commerce: (V + MVA) × Al_interna"],correct:1,exp:"O DIFAL Contribuinte (ativo/uso/consumo) usa o Novo DIFAL Base Dupla (Art. 28). O DIFAL E-Commerce para não contribuinte usa a fórmula mais simples de diferença de alíquotas (Art. 29, amparado pelo Conv. ICMS 236/21)."},
+{block:26,text:"Na Substituição Tributária cobrada no trânsito, sobre a composição da base e o tratamento de descontos, assinale a alternativa correta:",opts:["Débito: V_prod + Frete FOB + IPI + MVA; crédito: V_prod × Al_interna; desconto reduz a base do débito","Débito: (V_prod + Frete FOB + IPI + Outras despesas + MVA) × Al_interna; crédito: V_prod × Al_interestadual; desconto comercial NÃO interfere no ICMS ST (Art. 15, §9º, Anexo X)","Débito calculado apenas sobre o valor dos produtos sem MVA; crédito usa a alíquota interna","O crédito é obtido multiplicando a base do débito pela alíquota interestadual"],correct:1,exp:"ST: Débito = (V_prod + Frete FOB + IPI + Outras + MVA) × Al_interna; Crédito = V_prod × Al_interestadual; ICMS = Débito − Crédito. Desconto comercial concedido pelo remetente não interfere no cálculo da ST."},
+{block:26,text:"Sobre o Comércio Eventual e o Regime Especial de Cobrança por Irregularidades, assinale a alternativa correta:",opts:["Comércio Eventual: V_prod × (Al_interna − Al_inter); Irregularidades: MVA adicional de 20%","Ambas as modalidades usam a mesma fórmula, diferindo apenas no percentual da MVA (25% e 30%)","Comércio Eventual (Art. 6º): (V_mercad + MVA) × Al_interna; Irregularidades (Arts. 52/53): aplica MVA adicional de 30%","Comércio Eventual: (V_mercad + MVA) × Al_inter; Irregularidades: MVA de 40%"],correct:2,exp:"Comércio Eventual: fórmula com MVA × alíquota interna. Irregularidades: agrega 30% de MVA adicional sobre a operação irregular."},
+{block:26,text:"Um agente fiscal no posto de fiscalização deve liberar a mercadoria sem cobrança em qual das situações abaixo?",opts:["Destinatário é MEI e o remetente não efetuou a retenção da ST","Contribuinte com situação fiscal irregular em antecipação parcial","Contribuinte não inscrito com histórico de habitualidade comercial no estado","Emitente possui inscrição como Substituto Tributário regular no Piauí e destacou o ICMS-ST na NF-e"],correct:3,exp:"Situação de liberação: emitente com IE de substituto tributário regular + destaque de ICMS na NF-e → mercadoria liberada. As demais alternativas descrevem situações que geram CVI ou cobrança."},
+{block:26,text:"Sobre as ferramentas SISAT-DIFAL e SIAT VB, assinale a correspondência correta:",opts:["SISAT-DIFAL emite o TR (Termo de Responsabilidade); SIAT VB realiza cobranças em lote por NCM","SISAT-DIFAL: cobranças em lote por NCM para agilizar o processamento de MDFe DIFAL; SIAT VB: emissão do TR (Termo de Responsabilidade, Depósito e Confissão de Dívida) e consultas de cadastro, histórico, vínculos, NF-e e Visão Integral","Ambos realizam cobranças em lote; diferem apenas pela interface","SIAT VB processa MDFe interestaduais; SISAT-DIFAL processa apenas NF-e internas"],correct:1,exp:"SISAT-DIFAL = cobranças em lote por NCM (eficiência no processamento em massa). SIAT VB = emissão do TR e consultas operacionais. São ferramentas com papéis distintos na fiscalização de trânsito."},
+{block:26,text:"Uma transportadora conduz mercadorias de SP para um supermercado contribuinte piauiense com situação fiscal REGULAR. Ao consultar o SISAT, o agente identifica que a modalidade aplicável seria Antecipação Parcial e não há GNRE recolhida. Qual a conduta correta?",opts:["Gerar CVI, pois toda operação interestadual sem GNRE exige cobrança","Liberar a mercadoria, pois contribuinte regular + antecipação parcial é situação expressa de liberação no SISAT","Cobrar o DIFAL Base Dupla, pois é operação interestadual para contribuinte","Emitir TR no SIAT VB e aguardar recolhimento antes de liberar"],correct:1,exp:"A regra é clara: contribuinte correntista regular em situação de antecipação parcial → liberar sem cobrança. A CVI só é aplicada quando o contribuinte estiver irregular ou se tratar de outra modalidade (ST, MEI, Comércio Eventual, DIFAL E-commerce)."},
+
+// Q174-178 Status NF-e / CVI × DAR × DAR PF
+{block:27,text:"O status NOVA de uma NF-e no sistema SISAT significa:",opts:["A nota foi tratada e liberada para entrega ao destinatário","A nota foi emitida pelo remetente mas ainda não foi autorizada pela SEFAZ","A nota foi cobrada, porém o MDFe ainda não foi processado — situação que exige maior atenção do agente fiscal","A mercadoria foi retida por irregularidade fiscal e aguarda quitação do CVI"],correct:2,exp:"NOVA = nota cobrada + MDFe não processado. É o status que exige maior atenção, pois indica cobrança pendente de processamento. Não confundir com RETIDA (CVI ou DAR PF emitido) nem com LIBERADA (imposto pago e mercadoria liberada)."},
+{block:27,text:"A principal diferença entre a CVI e o DAR no contexto das cobranças antecipadas no trânsito é:",opts:["O DAR é usado em irregularidades e inclui multa; a CVI é usada em situações regulares sem multa","A CVI é emitida em situações de irregularidade fiscal e inclui multa, gerando status RETIDA; o DAR é usado em situações regulares, sem caráter punitivo, gerando status LIBERADA após o pagamento","Ambos geram status RETIDA; a diferença está apenas no valor cobrado","A CVI é emitida pelo contribuinte via GNRE; o DAR é emitido exclusivamente pelo agente fiscal no posto"],correct:1,exp:"CVI = irregularidade + multa + RETIDA. DAR = situação regular + sem multa + LIBERADA após pagamento. São instrumentos com naturezas opostas: o DAR é arrecadação normal; a CVI é cobrança punitiva."},
+{block:27,text:"O DAR PF (Documento de Arrecadação emitido no Posto Fiscal) se diferencia do DAR convencional porque:",opts:["O DAR PF não gera status RETIDA; o DAR comum sempre retém a mercadoria","O DAR PF é emitido diretamente pelo agente fiscal no posto; o DAR é gerado pelo contribuinte ou pelo sistema SISAT/GNRE — ambos podem reter a mercadoria até o pagamento","O DAR PF é exclusivo para operações de DIFAL E-Commerce; o DAR cobre todas as demais","Não há diferença prática; são documentos equivalentes com nomes distintos"],correct:1,exp:"O DAR PF é o instrumento de arrecadação emitido presencialmente pelo agente no posto quando a mercadoria passa pela barreira fiscal. O DAR comum é gerado pelo contribuinte ou pelo SISAT. Ambos geram status RETIDA até o pagamento — diferente do CVI, que é por irregularidade."},
+{block:27,text:"Após o pagamento do DAR em uma operação de antecipação parcial com contribuinte em situação regular, qual é o status esperado da NF-e?",opts:["NOVA","RETIDA","LIBERADA","IRREGULAR"],correct:2,exp:"Contribuinte regular + antecipação parcial + pagamento do DAR = NF-e com status LIBERADA. A mercadoria pode ser entregue ao destinatário. O status RETIDA só ocorre com emissão de CVI ou DAR PF."},
+{block:27,text:"Analise as afirmativas sobre os documentos de cobrança no trânsito e assinale a incorreta:",opts:["A CVI é emitida exclusivamente em situações de irregularidade fiscal e inclui multa e acréscimos","O DAR PF é emitido pelo agente fiscal no posto e gera status RETIDA até o pagamento","O DAR, quando utilizado em antecipação parcial para contribuinte regular, gera status LIBERADA após o pagamento","O status NOVA indica que a mercadoria foi liberada e o MDFe já foi processado com sucesso"],correct:3,exp:"A afirmativa está incorreta: NOVA significa que a nota foi cobrada mas o MDFe ainda não foi processado — não indica liberação. É justamente o status que exige maior atenção do agente fiscal."},
+
+// Q179-188 COFIT
+{block:28,text:"Sobre a estrutura organizacional da COFIT, assinale a alternativa que apresenta todas as informações corretas:",opts:["Base legal: Decreto 21.866/2023 | 7 Regiões Fiscais | Unidade: 3 AFTE + 1 PM | Regime: semanal","Base legal: Portaria SEFAZ-PI Nº 5/2020 | 10 Regiões Fiscais | Unidade: 2 AFTE + 1 PM | Regime: plantões quinzenais (15/15)","Base legal: Portaria SEFAZ-PI Nº 5/2020 | 12 Regiões Fiscais | Unidade: 2 AFTE + 2 PM | Regime: mensal","Base legal: Lei 4.257/89 | 10 Regiões Fiscais | Unidade: 1 Auditor + 2 AFTE | Regime: quinzenal"],correct:1,exp:"Portaria Nº 5/2020 + 10 Regiões Fiscais + 2 AFTE e 1 PM + plantões quinzenais (15 dias de serviço / 15 de folga). A base legal das infrações é o Art. 64 da Lei 4.257/89 c/c Art. 178 do RICMS — não a base legal da própria COFIT."},
+{block:28,text:"Um fiscal da COFIT encontra um caminhão com MDF-e de status encerrado em circulação e um estabelecimento comercial sem registro na SEFAZ-PI. Respectivamente, quais infrações caracterizam essas situações?",opts:["Falta de Documentação e Desvio de Rota","Prazos e Fuga e Embaraço","Fraude e MDF-e / Clandestinidade","Desvio de Rota / Fraude e MDF-e"],correct:2,exp:"MDF-e encerrado em circulação = Fraude e MDF-e (inclui status cancelado ou encerrado). Estabelecimento sem registro na SEFAZ = Clandestinidade."},
+{block:28,text:"No Protocolo Tático de Abordagem Segura da COFIT, qual é a sequência correta das 4 etapas?",opts:["Sinalização Visível → Seleção do Local → Apoio Policial → Interação Base","Interação Base → Seleção do Local → Sinalização Visível → Apoio Policial","Seleção do Local → Sinalização Visível → Interação Base → Apoio Policial","Apoio Policial → Seleção do Local → Sinalização Visível → Interação Base"],correct:2,exp:"A sequência é: (1) Seleção do Local (evitar curvas e locais isolados), (2) Sinalização Visível (girofar), (3) Interação Base (identificação e saudação), (4) Apoio Policial (PM cuida dos docs do veículo/condutor; AFTE foca na carga)."},
+{block:28,text:"Na abordagem da COFIT, após constatar irregularidade, qual o fluxo correto de formalização?",opts:["Emissão direta do Auto de Infração → assinatura do contribuinte → liberação","Levantamento de Estoque → Relatório de Ocorrência → NFA-e (se pagar) ou TR (se não pagar)","Relatório de Ocorrência → Intimação → Auto de Infração","Termo de Vistoria → Levantamento de Estoque → Interdição de Estabelecimento"],correct:1,exp:"Fluxo: Levantamento de Estoque (contagem física) → Relatório de Ocorrência (descreve a infração) → se houver pagamento imediato, emite NFA-e; se não houver, emite TR (Termo de Responsabilidade, Depósito e Confissão de Dívida)."},
+{block:28,text:"Sobre as assinaturas nos formulários da COFIT, assinale a alternativa correta:",opts:["O Levantamento de Estoque é assinado somente pelo Agente; o Relatório de Ocorrência é assinado pelo Agente e pelo contribuinte","Ambos os formulários são assinados exclusivamente pelo Agente de Tributos","O Relatório de Ocorrência é assinado somente pelo Agente; o Levantamento de Estoque é assinado pelo Agente e pelo contribuinte","Ambos exigem assinatura do contribuinte, do Agente e da Polícia Militar"],correct:2,exp:"Regra de ouro: Relatório de Ocorrência = só o Agente; Levantamento de Estoque = Agente + Contribuinte. O levantamento é um ato conjunto (contribuinte confirma a contagem física); o relatório é ato unilateral do fiscal."},
+{block:28,text:"O App Blitz SEFAZ é considerado o núcleo tático do ecossistema digital da COFIT. Assinale a afirmativa incorreta sobre ele:",opts:["Permite registro de passagem via OCR da câmera ou digitação manual da placa","Consulta documentos fiscais eletrônicos: MDF-e, NF-e e CT-e","Funciona em modo offline, sincronizando quando houver conexão","É o sistema responsável pela emissão do Passe Fiscal e consulta ao CCC nacional"],correct:3,exp:"Emissão de Passe Fiscal e consulta ao CCC (Cadastro Centralizado de Contribuintes) são funções do SISAT / SIAT Web (retaguarda estratégica — backoffice), não do App Blitz. O App Blitz é a ferramenta de campo."},
+{block:28,text:"Sobre os três sistemas do ecossistema digital da COFIT, relacione corretamente papel e sistema:",opts:["App Blitz = backoffice; SISAT = campo; SINESP+ = formulários COFIT","SISAT = retaguarda estratégica (Passe Fiscal, NFA-e, CCC); App Blitz = núcleo tático no terreno (offline); SINESP+ = segurança e inteligência (varredura de veículos, CAD equipes)","SINESP+ = emissão de NFA-e em campo; App Blitz = retaguarda; SISAT = segurança","Todos os três sistemas têm funções equivalentes, diferindo apenas na interface"],correct:1,exp:"Cada sistema tem papel distinto: SISAT = retaguarda/backoffice; App Blitz = ferramenta principal no terreno (offline capable); SINESP+/Alerta Brasil = integração com segurança pública, alertas de cargas e varredura nacional de veículos."},
+{block:28,text:"No Decreto 21.866/2023 (RICMS/PI), as margens de lucro por atividade econômica usadas nos cálculos de fiscalização constam em qual Anexo? E as obrigações acessórias (base dos formulários COFIT)?",opts:["Margens = Anexo II | Obrigações acessórias = Anexo VII","Margens = Anexo III | Obrigações acessórias = Anexo VI","Margens = Anexo I | Obrigações acessórias = Anexo V","Margens = Anexo IV | Obrigações acessórias = Anexo VIII"],correct:1,exp:"Anexo III = margens de lucro por atividade econômica. Anexo VI = Obrigações Acessórias (base normativa dos formulários COFIT). Anexo X = Substituição Tributária; Anexo IX = Serviços de transporte."},
+{block:28,text:"Um Agente da COFIT, durante operação, recebe de um comerciante uma caixa de chocolates como 'agradecimento'. Com base no Código de Conduta Ética da SEFAZ-PI, o agente deve:",opts:["Aceitar, pois se trata de brinde de baixo valor sem intenção de suborno","Aceitar apenas se o valor não ultrapassar 1 UFR-PI","Recusar, pois o Código veda expressamente a aceitação de brindes de contribuintes","Aceitar e registrar o recebimento no Relatório de Ocorrência"],correct:2,exp:"O Código de Boa Conduta Ética da SEFAZ-PI veda expressamente a aceitação de brindes de contribuintes, independentemente do valor. A corrupção passiva — receber vantagem indevida no exercício da função — é crime sujeito à responsabilidade penal."},
+{block:28,text:"Um veículo é abordado e o agente identifica que as mercadorias estão desacompanhadas de nota fiscal (Falta de Documentação). Assinale a alternativa que apresenta outra infração que também envolve problemas com a documentação, porém de natureza diferente:",opts:["Clandestinidade — estabelecimento sem registro na SEFAZ","Fuga e Embaraço — recusa em parar no posto fiscal","Prazos — documentos fiscais com validade vencida","Desvio de Rota — destinatário diferente do indicado na NF-e"],correct:2,exp:"'Prazos' também envolve documentação, mas a distinção é: Falta de Documentação = ausência ou inidoneidade do documento; Prazos = documento existe, mas está com o prazo de circulação vencido. As demais alternativas são infrações distintas não relacionadas à documentação em si."},
+
+// ===== QUESTÕES INTEGRADAS — Caderno de Questões SEFAZ-PI (Intermediário + Avançado) e Caderno Unificado 30Q =====
+
+// -- Bloco 26: Cobranças Antecipadas no Trânsito (novas) --
+{block:26,text:"Um contribuinte do ICMS regular perante o Estado do Piauí realiza a entrada de mercadorias decorrentes de uma operação interestadual sujeita ao regime de antecipação parcial do imposto. Quanto à geração da CVI (Cobrança por Verificação de Irregularidade), o procedimento correto da fiscalização é:",opts:["Gerar a CVI imediatamente no momento da entrada da mercadoria no Estado","Não gerar CVI, pois o contribuinte está regular e a cobrança é de antecipação parcial","Gerar a CVI obrigatoriamente, concedendo prazo de 15 dias para pagamento","Gerar ou não a CVI, a critério do auditor, conforme o volume comercializado"],correct:1,exp:"Conforme as diretrizes do Decreto nº 21.866/2023 (Anexo VII), NÃO se deve gerar CVI quando o contribuinte destinatário estiver REGULAR e a cobrança for especificamente na modalidade de ANTECIPAÇÃO PARCIAL. Nesse caso, o lançamento flui normalmente pela rotina de conta corrente."},
+
+{block:26,text:"Uma transportadora conveniada entrega mercadorias a um destinatário sem que a CVI (Cobrança por Verificação de Irregularidade) tenha sido previamente quitada, e sem autorização expressa da SEFAZ-PI. Qual é a consequência legal prevista no Decreto nº 21.866/2023 (Anexo VII, art. 81)?",opts:["A mercadoria é considerada isenta, transferindo-se a cobrança para o exercício seguinte","O destinatário sofre suspensão automática do cadastro no CAGEP","A transportadora fica obrigada ao recolhimento do imposto cobrado, atualizado e com multa, e o fato é motivo para sua exclusão do regime especial","O documento fiscal original é declarado inidôneo, impedindo retificação posterior pelo emitente"],correct:2,exp:"O parágrafo único do art. 81 do Anexo VII do Decreto nº 21.866/2023 prevê responsabilidade solidária para transportadoras credenciadas que entregarem mercadorias retidas por CVI sem quitação ou autorização: assumem o recolhimento do imposto integral com multa e acréscimos, além de ficarem sujeitas à exclusão do regime especial."},
+
+{block:26,text:"Na fiscalização de trânsito em posto fiscal de divisa, intercepta-se carga de confecções trazida por transportadora cadastrada, destinada a pessoa física que realiza vendas informais com habitualidade e em volume que caracteriza nítido intuito comercial. Com base no Decreto nº 21.866/2023 (Anexo VII), qual providência deve ser adotada?",opts:["Liberar o veículo sem retenção, repassando o monitoramento para a malha BI de pós-auditoria","Realizar a cobrança do ICMS por CVI, pois a mercadoria é destinada a não inscrito com habitualidade e intuito comercial","Lançar multa isolada de obrigação acessória contra o condutor","Emitir alerta tipo 3 no CPF do destinatário, liberando a transportadora de qualquer responsabilidade"],correct:1,exp:"O art. 81, alínea 'c', do Decreto nº 21.866/2023 estabelece que a entrada de mercadorias em volume que caracterize intuito nitidamente comercial ou habitualidade de comércio praticada por destinatários informais (não inscritos no CAGEP) obriga o auditor a efetuar retenção física e emitir CVI."},
+
+{block:26,text:"No Posto Fiscal Fronteiriço da SEFAZ-PI, mercadorias destinadas a um MEI entram no território estadual sem retenção do ICMS na fonte por substituição tributária. O fiscal emite uma CVI. Qual é o prazo legal concedido ao transportador ou contribuinte para pagamento do DAR gerado pela CVI?",opts:["O pagamento deve ocorrer na hora, antes da liberação das mercadorias","30 dias contados do primeiro dia do mês subsequente","15 dias","45 dias, sob pena de inclusão nos cadastros de inadimplência"],correct:2,exp:"Conforme as instruções operacionais da CVI, o documento é liberado imediatamente, porém o boleto do DAR de recolhimento bancário tem o prazo oficial de 15 dias para quitação."},
+
+{block:26,text:"No Posto Fiscal de trânsito, um transportador é abordado carregando produtos cujo ICMS deveria ter sido retido por substituição tributária por força de convênio assinado pelo Estado do Piauí. O auditor constata que a retenção não foi efetuada na origem. Com base no Decreto 21.866/2023, qual medida deve ser tomada?",opts:["Conceder isenção automática porque o erro ocorreu em estabelecimento remetente fora do Piauí","Lavrar auto de infração definitivo sem possibilidade de autorregularização","Emitir CVI, pois a falta de retenção de ICMS-ST em convênios/protocolos autoriza a cobrança por CVI na entrada do Estado","Apreender permanentemente o veículo e leiloar a frota em 48 horas"],correct:2,exp:"O art. 81 do Anexo VII do Decreto Estadual nº 21.866/2023 prevê que nas operações com mercadorias submetidas à substituição tributária por convênio em que o remetente não efetue a retenção na fonte, aplica-se a Cobrança por Verificação de Irregularidade (CVI) na entrada do território."},
+
+// -- Bloco 14: Regras de Pós-Validação EFD (novas) --
+{block:14,text:"Um Auditor Fiscal analisa o registro E111 da EFD e detecta que um contribuinte deixou de preencher a descrição complementar obrigatória para detalhar os motivos de um ajuste do código P1020008 (Créditos Extemporâneos). Qual é o tipo de inconsistência gerada e sua consequência imediata?",opts:["Tipo 1 (Impeditiva): EFD rejeitada e contribuinte fica imediatamente omisso","Tipo 2 (Pendência): EFD processada, mas impede emissão de certidão regular após 45 dias","Tipo 3 (Alerta): EFD processada com a inconsistência detectada, mas o alerta não deixa o contribuinte em situação fiscal irregular","Erro de Leiaute Estrutural: arquivo bloqueado no validador nacional do SPED"],correct:2,exp:"Conforme a regra de integridade sistêmica 3.1.06, o esquecimento ou omissão do preenchimento de textos de descrição complementar no registro E111 para justificar ajustes como o P1020008 é tipificado como Inconsistência Tipo 3 (Alerta). O arquivo é processado normalmente e o contribuinte não tem sua situação cadastral negativada."},
+
+{block:14,text:"Um auditor da SEFAZ-PI analisa a EFD do registro E111 e identifica que o contribuinte realizou um estorno de débito utilizando o código de ajuste genérico P1039999. Com base nas regras de pós-validação (regra 3.1.33), qual será o reflexo na escrituração?",opts:["A EFD será rejeitada automaticamente com status de Não Processada","O sistema gerará inconsistência Tipo 2 (Pendência), colocando o contribuinte em situação irregular em até 45 dias caso não sane o erro","O erro será classificado como Tipo 3 (Alerta), exigindo apenas descrição complementar no próximo período","O imposto será recalculado de ofício pelo SIATweb, gerando auto de infração automático"],correct:1,exp:"Conforme as regras de integridade do manual de pós-validação (regras 3.1.32 a 3.1.34), a utilização de ajustes genéricos de crédito, dedução ou estorno de débito no registro E111 constitui uma vedação que gera inconsistência do Tipo 2 (Pendência)."},
+
+{block:14,text:"Determinada EFD do ICMS processada pela SEFAZ-PI acusa inconsistência devido à falta de preenchimento da descrição complementar em ajuste genérico identificado pelo código P1009999. Qual é a classificação dessa inconsistência no sistema de malhas?",opts:["Tipo 3 (Alerta): inconsistência de integridade que não impede o processamento e não altera a situação fiscal de regularidade","Tipo 2 (Pendência): todo erro em ajuste genérico acarreta restrição cadastral em 45 dias","Tipo 1 (Impeditiva): invalida o lote transmitido até a inserção do texto exigido","Erro Cadastral Crítico: provoca suspensão de ofício imediata da inscrição no CAGEP"],correct:0,exp:"De acordo com o manual integrado de integridade das regras da EFD (itens 3.1.06 a 3.1.12), esquecer ou omitir descrições em campos de ajustes genéricos padrão como o código P1009999 resulta em falha informativa classificada no nível de Tipo 3 (Alerta) — o arquivo é processado sem negativar a situação cadastral."},
+
+{block:14,text:"Uma empresa efetuou apropriação de créditos de ICMS sobre bens destinados ao ativo imobilizado no Registro E111 da EFD, mas deixou de preencher o respectivo registro do CIAP (Controle de Crédito de ICMS do Ativo Permanente). Qual será a classificação desse erro pelas regras de integridade?",opts:["Tipo 3 (Alerta): obrigações do CIAP têm natureza puramente informativa","Tipo 2 (Pendência): apropriação de crédito de imobilizado no E111 sem informações no CIAP gera irregularidade fiscal","Tipo 1 (Impeditiva): gera exclusão compulsória da inscrição estadual no CAGEP em 24 horas","Inconsistência Nula: o bloco E111 tem precedência hierárquica sobre os controles patrimoniais"],correct:1,exp:"A apropriação de créditos de ICMS relativos à entrada de bens do ativo imobilizado diretamente no campo E111 sem o preenchimento obrigatório e vinculante do respectivo bloco CIAP constitui quebra grave de consistência. A lista de regras de irregularidade do Piauí classifica essa falta como Pendência (Tipo 2), gerando restrição cadastral futura se não corrigida."},
+
+{block:14,text:"Uma empresa cometeu um erro de preenchimento na escrituração do SPED Fiscal e utilizou código de ajuste inadequado no bloco E113 para acobertar uma operação cujo valor do ajuste foi de R$ 6.500,00. Qual será a classificação dessa desconformidade?",opts:["Inconsistência irrelevante: erros de codificação em sub-registros de documentos fiscais são expurgados pelo sistema","Tipo 2 (Pendência): erros de identificação de documentos nos registros E113 e E240 cujos valores de ajustes sejam iguais ou superiores a R$ 5.000,00 geram irregularidade","Tipo 1 (Impeditiva): bloqueia instantaneamente a transmissão da EFD de todas as filiais","Tipo 3 (Alerta): recomenda apenas inclusão de notas explicativas simplificadas"],correct:1,exp:"O item 4 do rol de regras que causam irregularidade qualifica como Tipo 2 (Pendência) os erros em informações adicionais ou identificação de documentos nos registros E113 e E240 sempre que o montante dos ajustes avaliados for igual ou superior ao limite financeiro de R$ 5.000,00."},
+
+{block:14,text:"Um auditor fiscal da SEFAZ-PI analisa uma EFD e identifica omissão de informações sobre os adicionais de suspensão para um contribuinte detentor de Regime Especial que se encontra irregular. De acordo com as normas de pós-validação, qual é o tipo dessa inconsistência e o reflexo na situação do contribuinte?",opts:["Tipo 1 (Impeditiva): invalida o processamento e torna o contribuinte omisso imediatamente","Tipo 3 (Alerta): gera conta corrente do período sem penalidade ou restrição cadastral","Tipo 2 (Pendência): processa a EFD, mas deixa o contribuinte em situação irregular se não sanada em até 45 dias","Tipo 2 (Pendência): gera impedimento imediato de emissão de qualquer documento fiscal eletrônico"],correct:2,exp:"A ausência de dados fiscais acessórios estruturantes de regimes especiais em contribuintes inadimplentes constitui inconsistência de Tipo 2 (Pendência). Ela permite o fechamento mensal da conta, mas gera irregularidade se persistir após 45 dias."},
+
+// -- Bloco 8: Malhas Fiscais (novas) --
+{block:8,text:"Um contribuinte detectou inconsistência classificada como 'Pendência' em sua EFD e deseja evitar que seu estabelecimento fique em situação fiscal irregular. Para realizar autorregularização por meio de Declaração Complementar, como ele deve proceder?",opts:["Enviar a Declaração Complementar via e-AGEAT, que causará saída automática da malha sem intervenção do auditor","Realizar a Declaração Complementar via e-AGEAT e solicitar obrigatoriamente a EXCLUSÃO da malha via Processo Eletrônico Tributário (PET) no SIATweb, para que o auditor faça a exclusão manual","Aguardar a lavratura automática do Auto de Infração para só então contestar no módulo de malhas","Apresentar contestação direta na Ouvidoria Fazendária, suspendendo o prazo regulamentar de 45 dias"],correct:1,exp:"O fluxo operacional da SEFAZ-PI separa os caminhos: enquanto a Retificação pura da EFD provoca saída automatizada das malhas, a regularização por Declaração Complementar exige obrigatoriamente que o contribuinte abra pedido formal de exclusão via Processo Eletrônico Tributário (PET) no portal SIATweb para baixa manual pelo auditor."},
+
+{block:8,text:"As Malhas Fiscais da SEFAZ-PI operam em dois ecossistemas tecnológicos: 'Malhas BI' e 'Malhas Regras de Pós-Validação'. Qual é a principal característica de visualização e ação atribuída especificamente ao ecossistema de Malhas BI?",opts:["Impedem a transmissão física dos arquivos na Receita Federal","São visíveis no Painel de Malhas e servem de insumo para o Planejamento de Ações Fiscais (Operações Pontuais, Seleção de Auditoria Homologatória e Intimações em lote)","Emitem o Extrato de Processamento Estadual (EPE) com alertas de exclusão do Simples Nacional em 24 horas","Substituem o uso da Escrituração Fiscal Digital por livros físicos de apuração comercial"],correct:1,exp:"O organograma analítico das malhas indica que as rotinas de Business Intelligence (Malhas BI) operam em nível estratégico interno. Seus relatórios geram visibilidade interna no Painel de Malhas e servem de subsídio para o planejamento das Ações Fiscais, disparando operações pontuais preventivas, seleção para auditorias homologatórias ou geração de intimações em lote."},
+
+{block:8,text:"Diante de uma inconsistência de malha fiscal Tipo 2 (Pendência), qual conduta de autorregularização fará com que o contribuinte saia AUTOMATICAMENTE da malha, sem necessidade de intervenção ou exclusão manual pelo auditor fiscal?",opts:["Formalização de Contestação via Processo Eletrônico Tributário (PET) no SIATweb","Entrega de Declaração Complementar via e-AGEAT, seguida de petição no PET","Envio de Retificação (EFD/PGDASD) que sane integralmente a inconsistência apontada","Apresentação de contrarrazão pelo módulo de malhas eletrônicas do e-AGEAT"],correct:2,exp:"O mecanismo automatizado de saneamento de malhas reconhece e valida diretamente a transmissão de uma Retificação original (EFD/PGDASD). Casos associados a declarações complementares demandam a criação de processo no PET para efetiva exclusão manual pelo auditor."},
+
+{block:8,text:"No monitoramento pós-processamento da EFD, a equipe de malhas fiscais da SEFAZ-PI utiliza cruzamentos informatizados para detectar inconsistências. Dentre as opções abaixo, qual representa uma malha fiscal de pós-validação ou BI efetivamente implementada pelo fisco piauiense?",opts:["Cruzamento do estoque físico do inventário com imagens de satélite do Google Maps","EFD Faturamento × DIMP (Declaração de Informações de Meios de Pagamento)","Malha de Monitoramento de Horas Trabalhadas dos motoristas via GPS","Validação de Custos Operacionais Internos com base na folha de pagamento enviada ao FGTS"],correct:1,exp:"O portfólio de malhas implementadas pela SEFAZ-PI conta expressamente com o cruzamento das informações declaradas na escrituração com as informações financeiras de cartões e meios eletrônicos consolidadas na DIMP (Malhas de Faturamento × DIMP ou PGDASD × DIMP)."},
+
+// -- Bloco 6: IPVA + SIAT Web (nova) --
+{block:6,text:"Uma lei estadual piauiense publicada em 01/12/2008 alterou a alíquota do IPVA relativo a veículos usados de 3% para 4%. A partir de qual data essa majoração pode ser exigida validamente, considerando os princípios constitucionais tributários aplicáveis?",opts:["01/01/2009 — anterioridade anual, pois o IPVA é exceção à noventena em qualquer hipótese","02/03/2009 — aplica-se cumulativamente a anterioridade anual e a anterioridade mitigada de 90 dias (noventena)","01/01/2010 — anterioridade exige decurso de um ano civil completo após o exercício subsequente","02/12/2008 — IPVA possui caráter extrafiscal e eficácia imediata"],correct:1,exp:"A majoração de alíquota do IPVA sujeita-se simultaneamente ao princípio da anterioridade anual (próximo exercício) E ao da noventena (90 dias). A exceção constitucional ao princípio da noventena para o IPVA aplica-se apenas à FIXAÇÃO DA BASE DE CÁLCULO, não à alteração de alíquota. Publicada em 01/12/2008: 90 dias → exigível a partir de 02/03/2009."},
+
+// -- Bloco 15: Base de Cálculo ICMS e DIFAL (novas) --
+{block:15,text:"Um microcomputador montado em Ilhéus/BA é vendido por uma indústria a uma empresa de segurança privada localizada em Parnaíba/PI, que o utilizará como ativo permanente. O valor da operação é R$ 5.000,00. A alíquota interestadual é 7% e a alíquota interna no Piauí é 21%. Qual o valor do ICMS DIFAL (Base Dupla) devido ao Estado do Piauí?",opts:["R$ 822,78","R$ 886,07","R$ 700,00","R$ 1.050,00"],correct:1,exp:"ICMS origem = 5.000 × 7% = R$350. Numerador = 5.000 − 350 = 4.650. Denominador = 1 − 0,21 = 0,79. BC recalculada por dentro = 4.650 / 0,79 = R$5.886,07. ICMS total = 5.886,07 × 21% = R$1.236,07. Deduzindo crédito da origem (R$350), DIFAL líquido = R$886,07."},
+
+{block:15,text:"Uma indústria metalúrgica de Piripiri/PI vende chapas de aço para uma construtora em Teresina/PI. O valor dos produtos é R$ 100.000,00, com acréscimo de juros contratuais de R$ 2.000,00 pela venda a prazo. A indústria repassou o encargo do IPI de R$ 10.000,00. O comprador utilizará o material na prestação de serviços (consumidor final do item). Qual a correta Base de Cálculo do ICMS desta operação própria?",opts:["R$ 100.000,00","R$ 102.000,00","R$ 112.000,00","R$ 110.000,00"],correct:2,exp:"Os juros por venda a prazo integram o valor da operação própria. Como a construtora utilizará o aço na prestação de serviços (consumidor final), o encargo do IPI também integra obrigatoriamente a base de cálculo do ICMS. BC = 100.000 + 2.000 + 10.000 = R$112.000,00."},
+
+{block:15,text:"Uma indústria Beta, localizada em Piracuruca/PI, vendeu mercadorias para um estabelecimento varejista em Teresina/PI. Na nota fiscal, o valor total dos produtos foi de R$ 100.000,00, com frete de R$ 2.000,00 cobrado na própria nota e desconto incondicional de R$ 5.000,00 discriminado no documento. Qual será a Base de Cálculo do ICMS próprio dessa operação?",opts:["R$ 102.000,00","R$ 100.000,00","R$ 97.000,00","R$ 95.000,00"],correct:2,exp:"A composição da base de cálculo do ICMS engloba o valor da operação acrescido de frete e despesas acessórias. Os descontos incondicionais são deduzidos da base de cálculo. Portanto: R$100.000 + R$2.000 (frete CIF na nota) − R$5.000 (desconto incondicional) = R$97.000,00."},
+
+{block:15,text:"A alíquota nominal do ICMS interno para determinada mercadoria no Estado do Piauí foi fixada em 20%. Para fins de avaliação do impacto econômico (cálculo por dentro), qual é a alíquota efetiva apurada?",opts:["20,00%","22,50%","25,00%","30,00%"],correct:2,exp:"Aplicando a fórmula de conversão: Al_EF = Al_N / (1 − Al_N) → 0,20 / (1 − 0,20) = 0,20 / 0,80 = 0,25 = 25%. O ICMS 'por dentro' representa 20% do preço final (com imposto incluído), equivalendo a 25% do preço sem imposto."},
+
+{block:15,text:"Qual das expressões matemáticas reflete a fórmula regulamentar correta do ICMS DIFAL por base dupla, utilizada pela calculadora oficial da SEFAZ-PI para destinações a consumidor final não contribuinte?",opts:["DIFAL = (V_oper × ALQ_interna) − (V_oper × ALQ_interestadual)","DIFAL = [(V_oper − ICMS_origem) / (1 − ALQ_interna)] × ALQ_interna − (V_oper × ALQ_interestadual)","DIFAL = [V_oper / (1 − ALQ_interestadual)] × (ALQ_interna − ALQ_interestadual)","DIFAL = (V_oper − ICMS_origem) × [ALQ_interna / (1 − ALQ_interestadual)]"],correct:1,exp:"A fórmula oficial adotada pela calculadora de DIFAL por base dupla da SEFAZ-PI é: DIFAL = [(V_oper − ICMS_origem) / (1 − ALQ_interna)] × ALQ_interna − (V_oper × ALQ_interestadual). Essa fórmula obtém a BC 'por dentro' para o destino e deduz o crédito da origem."},
+
+// -- Bloco 3: Documentos Fiscais (novas) --
+{block:3,text:"Um auditor fiscal analisa uma nota fiscal eletrônica e precisa identificar os campos que compõem sua chave de acesso de 44 dígitos. Com base na estrutura oficial do DFe (SPED), os códigos de modelo '55' e '57' correspondem a quais documentos, respectivamente?",opts:["NFC-e e CT-e para Outros Serviços (CTeOS)","NF-e e CT-e para Outros Serviços (CTeOS)","NF-e e Conhecimento de Transporte Eletrônico (CT-e)","CT-e e NFC-e"],correct:2,exp:"Na codificação nacional do ambiente SPED: o numeral '55' parametriza a Nota Fiscal Eletrônica (NF-e) voltada a operações corporativas/industriais, enquanto o código '57' sinaliza o Conhecimento de Transporte Eletrônico (CT-e) de cargas. O modelo '65' é da NFC-e e '58' é do MDF-e."},
+
+{block:3,text:"A fiscalização volante intercepta uma carga e o auditor verifica a Chave de Acesso do documento eletrônico. O código de modelo consultado na chave é '65'. A qual documento refere-se esse código?",opts:["Conhecimento de Transporte Eletrônico (CT-e)","Nota Fiscal Eletrônica de Bens Duráveis (NF-e BD)","Manifesto Eletrônico de Documentos Fiscais (MDF-e)","Nota Fiscal de Consumidor Eletrônica (NFC-e)"],correct:3,exp:"Na listagem de identificação de documentos das chaves de acesso do SPED: '55' = NF-e, '57' = CT-e, '58' = MDF-e, '65' = NFC-e (Nota Fiscal de Consumidor Eletrônica, que substituiu os antigos cupons fiscais no ambiente varejista)."},
+
+{block:3,text:"Um auditor fiscal analisa um documento fiscal eletrônico e identifica que os primeiros dois dígitos da Chave de Acesso de 44 algarismos correspondem ao número '35'. Qual informação estrutural do documento esses dígitos identificam?",opts:["O mês de emissão da nota fiscal eletrônica","O modelo do Documento Fiscal Eletrônico (DFe)","A Unidade da Federação (UF) de origem do emitente","O código numérico do CNPJ do estabelecimento transportador"],correct:2,exp:"Na montagem sequencial padrão da chave de acesso de 44 dígitos de qualquer DFe, os dois primeiros dígitos identificam o código da Unidade da Federação (UF) de origem do emitente. O número '35' corresponde ao estado de São Paulo, por exemplo. O modelo do documento e o CNPJ do emitente vêm em outras posições."},
+
+// -- Bloco 5: LGPD (nova) --
+{block:5,text:"A LGPD impõe restrições ao tratamento de dados pessoais no âmbito da Administração Pública. Ao atender uma demanda que envolva informações protegidas por sigilo fiscal e dados cadastrais de terceiros na SEFAZ-PI, qual princípio fundamental da LGPD deve orientar o auditor?",opts:["Princípio da Publicidade Plena: livre acesso de qualquer cidadão a relatórios de auditoria e dados financeiros de empresas concorrentes","Princípio da Finalidade e da Necessidade: tratamento de dados limitado ao estrito cumprimento das competências legais da fiscalização tributária","Princípio do Consentimento Obrigatório: autorização expressa do contribuinte para qualquer cruzamento de malha fiscal no SPED","Princípio da Autonomia Setorial: o auditor pode divulgar dados sensíveis em mídias sociais para fins de transparência pedagógica"],correct:1,exp:"De acordo com os fundamentos regulamentares da LGPD voltados ao setor público, o tratamento de dados pessoais para fins de fiscalização e arrecadação tributária baseia-se no estrito cumprimento de obrigações legais, devendo obedecer rigidamente aos princípios da Finalidade (uso limitado à finalidade declarada) e da Necessidade (coleta do mínimo necessário)."},
+
+// -- Bloco 29: ITCMD (nova) --
+{block:29,text:"Um processo de divórcio consensual extingue o vínculo conjugal de João e Maria, casados em regime de comunhão de bens. O patrimônio total do casal totalizava R$ 900.000,00, divididos entre uma casa (R$ 500.000,00) e um apartamento (R$ 400.000,00). Na partilha, Maria permaneceu com a titularidade da casa e João com a do apartamento. Sob a ótica do ITCMD, qual alternativa está correta?",opts:["Não ocorreu fato gerador de ITCMD, pois a divisão de bens em divórcio é imune a qualquer tributação estadual","Ocorreu fato gerador do ITCMD: Maria deve recolher o imposto calculado sobre R$ 50.000,00, correspondente ao excesso de meação recebido gratuitamente","Ocorreu fato gerador e ambos devem recolher ITCMD calculado sobre o valor integral dos bens recebidos","Configura fato gerador de ICMS, por se tratar de circulação jurídica e transferência definitiva de propriedade imobiliária"],correct:1,exp:"A meação total do patrimônio comum somava R$450.000,00 para cada cônjuge. Ao ficar com a casa de R$500.000,00, Maria recebeu um valor desproporcional que excede sua metade ideal em R$50.000,00. Esse excesso recebido de forma não onerosa configura doação, disparando o fato gerador do ITCMD sobre a diferença. João, ao receber R$400.000,00 (abaixo da meação), não gera ITCMD."},
 ];
 
 // ===== STATE =====
@@ -813,7 +1129,7 @@ function openHome(){
 
 function openBlock(blockId){
   state.view='block';state.currentBlock=blockId;
-  const b=BLOCKS[blockId];
+  const b=BLOCKS.find(x=>x.id===blockId);
   $('bt-emoji').textContent=b.emoji;
   $('bt-title').textContent=b.title;
   switchTab('study');
@@ -832,7 +1148,7 @@ function switchTab(tab){
 
 // ===== STUDY TAB =====
 function renderStudy(blockId){
-  const b=BLOCKS[blockId];
+  const b=BLOCKS.find(x=>x.id===blockId);
   let html='<div class="study-section"><h3>📌 Pontos-Chave</h3><table class="key-table"><thead><tr><th>Ponto</th><th>Detalhe</th></tr></thead><tbody>';
   b.keyPoints.forEach(([k,v])=>{html+=`<tr><td>${k}</td><td>${v}</td></tr>`;});
   html+='</tbody></table></div>';
@@ -979,10 +1295,10 @@ function renderSimStart(){
   $('sim-body').innerHTML=`
     <div class="sim-start fade-in">
       <h3>🎯 Simulado Completo</h3>
-      <p>Teste seus conhecimentos com todas as <strong>133 questões</strong> do material de estudo, cobrindo todos os 16 módulos temáticos do concurso AFTE III 2026.</p>
+      <p>Teste seus conhecimentos com todas as <strong>188 questões</strong> do material de estudo, cobrindo todos os 29 módulos temáticos do concurso AFTE III 2026.</p>
       <div class="sim-info-grid">
-        <div class="sinfo"><div class="sv">133</div><div class="sl">Questões</div></div>
-        <div class="sinfo"><div class="sv">16</div><div class="sl">Módulos</div></div>
+        <div class="sinfo"><div class="sv">188</div><div class="sl">Questões</div></div>
+        <div class="sinfo"><div class="sv">29</div><div class="sl">Módulos</div></div>
         <div class="sinfo"><div class="sv">~3,2h</div><div class="sl">Tempo estimado</div></div>
         <div class="sinfo"><div class="sv">90%</div><div class="sl">Meta de acertos</div></div>
       </div>
@@ -1002,7 +1318,7 @@ function renderSimQuestion(idx){
   $('sim-counter').textContent=`${idx+1} / ${QUESTIONS.length}`;
   $('sim-pbar-fill').style.width=pct+'%';
   const alreadyAnswered=state.simState.answers[idx]!==undefined;
-  const blockName=BLOCKS[q.block].title;
+  const blockName=(BLOCKS.find(x=>x.id===q.block)||{title:'—'}).title;
   let optsHtml=q.opts.map((opt,i)=>{
     let cls='q-opt';
     if(alreadyAnswered){
