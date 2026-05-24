@@ -1251,6 +1251,7 @@ function selectAnswer(idx,optIdx){
   renderQuestion(currentQuizBlock,idx);
   updateStats();updateNav();
   renderStudy(currentQuizBlock);
+  saveProgress();
 }
 
 function jumpToQuestion(idx){
@@ -1261,6 +1262,7 @@ function jumpToQuestion(idx){
 function finishQuiz(blockId){
   state.quizState[blockId].finished=true;
   renderQuizResult(blockId);
+  saveProgress();
 }
 
 function renderQuizResult(blockId){
@@ -1287,6 +1289,7 @@ function renderQuizResult(blockId){
 function resetQuiz(blockId){
   state.quizState[blockId]={answers:{},current:0,finished:false};
   renderQuiz(blockId);updateStats();updateNav();renderStudy(blockId);
+  saveProgress();
 }
 
 function reviewQuiz(blockId){
@@ -1321,6 +1324,7 @@ function renderSimStart(){
 
 function startSimulado(){
   state.simState={answers:{},current:0,started:true,finished:false};
+  saveProgress();
   renderSimQuestion(0);
 }
 
@@ -1369,10 +1373,13 @@ function simSelectAnswer(idx,optIdx){
   if(state.simState.answers[idx]!==undefined)return;
   state.simState.answers[idx]=optIdx;
   renderSimQuestion(idx);
+  saveProgress();
 }
 
 function finishSimulado(){
-  state.simState.finished=true;renderSimResult();
+  state.simState.finished=true;
+  saveProgress();
+  renderSimResult();
 }
 
 function renderSimResult(){
@@ -1464,6 +1471,7 @@ function renderRevisaoStart(){
 
 function startRevisao(){
   state.revisaoState.answers={};state.revisaoState.current=0;state.revisaoState.started=true;state.revisaoState.finished=false;
+  saveProgress();
   renderRevisaoQuestion(0);
 }
 
@@ -1501,10 +1509,13 @@ function revisaoSelectAnswer(idx,optIdx){
   if(state.revisaoState.answers[idx]!==undefined)return;
   state.revisaoState.answers[idx]=optIdx;
   renderRevisaoQuestion(idx);
+  saveProgress();
 }
 
 function finishRevisao(){
-  state.revisaoState.finished=true;renderRevisaoResult();
+  state.revisaoState.finished=true;
+  saveProgress();
+  renderRevisaoResult();
 }
 
 function renderRevisaoResult(){
@@ -1521,6 +1532,7 @@ function renderRevisaoResult(){
 
 function resetRevisao(){
   state.revisaoState={wrongList:getWrongQuestions(),answers:{},current:0,started:false,finished:false};
+  saveProgress();
   renderRevisaoStart();
 }
 
@@ -1569,7 +1581,34 @@ function toggleSidebar(){
   $('overlay').classList.toggle('show');
 }
 
+// ===== LOCAL STORAGE =====
+const STORAGE_KEY='sefaz_pi_progress_v1';
+function saveProgress(){
+  try{
+    localStorage.setItem(STORAGE_KEY,JSON.stringify({
+      quizState:state.quizState,
+      simState:state.simState,
+      revisaoState:state.revisaoState,
+    }));
+  }catch(e){}
+}
+function loadProgress(){
+  try{
+    const raw=localStorage.getItem(STORAGE_KEY);
+    if(!raw)return;
+    const data=JSON.parse(raw);
+    if(data.quizState){
+      BLOCKS.forEach(b=>{
+        if(data.quizState[b.id])state.quizState[b.id]=data.quizState[b.id];
+      });
+    }
+    if(data.simState)state.simState=data.simState;
+    if(data.revisaoState)state.revisaoState=data.revisaoState;
+  }catch(e){}
+}
+
 // ===== INIT =====
+loadProgress();
 buildNav();
 buildHomeGrid();
 updateStats();
