@@ -190,6 +190,12 @@ kbd{background:var(--border);padding:1px 5px;border-radius:4px;font-size:10px;fo
 .fade-in{animation:fadeIn .25s ease forwards}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}
 .loading{animation:pulse 1s infinite}
+
+/* REVISÃO VIEW */
+#view-revisao{display:none;flex-direction:column;height:100%;overflow:hidden}
+.btn-revisao{width:100%;margin-top:8px;padding:10px;background:linear-gradient(135deg,#7c3aed,#6d28d9);border:none;border-radius:8px;color:#fff;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:all .15s;letter-spacing:.3px}
+.btn-revisao:hover{background:linear-gradient(135deg,#8b5cf6,#7c3aed);transform:translateY(-1px)}
+.ni-count-red{font-size:10px;background:rgba(239,68,68,.2);color:var(--red);border-radius:10px;padding:1px 6px;flex-shrink:0}
 </style>
 </head>
 <body>
@@ -208,6 +214,10 @@ kbd{background:var(--border);padding:1px 5px;border-radius:4px;font-size:10px;fo
     <div class="stat-pill"><div class="sv" id="stat-pct">—</div><div class="sl">Taxa</div></div>
   </div>
   <div id="nav">
+    <div class="nav-section">Ferramentas</div>
+    <div class="nav-item" id="nav-revisao" onclick="openRevisao()">
+      <span class="ni-emoji">🔁</span><span class="ni-label">Revisão de Erros</span><span class="ni-count-red" id="rev-wrong-count">0</span>
+    </div>
     <div class="nav-section">Módulos</div>
     <!-- nav items injected by JS -->
   </div>
@@ -247,6 +257,19 @@ kbd{background:var(--border);padding:1px 5px;border-radius:4px;font-size:10px;fo
     </div>
     <div class="tab-content" id="tab-content-study"></div>
     <div class="tab-content" id="tab-content-quiz" style="display:none"></div>
+  </div>
+
+  <!-- REVISÃO VIEW -->
+  <div id="view-revisao">
+    <div class="sim-header">
+      <h2>🔁 Revisão de Erros</h2>
+      <div class="sim-meta">
+        <button class="btn btn-outline btn-sm" onclick="openHome()">← Home</button>
+        <div class="sim-counter" id="rev-counter"></div>
+        <div class="sim-pbar"><span id="rev-pbar-fill" style="width:0%"></span></div>
+      </div>
+    </div>
+    <div class="sim-body" id="rev-body"></div>
   </div>
 
   <!-- SIMULADO VIEW -->
@@ -1003,6 +1026,7 @@ const state = {
   currentTab:'study',
   quizState:{},  // blockId -> {answers:{qIdx:optIdx}, current:0, finished:false}
   simState:{answers:{}, current:0, started:false, finished:false},
+  revisaoState:{wrongList:[],answers:{},current:0,started:false,finished:false},
 };
 // init quizState
 BLOCKS.forEach(b=>{state.quizState[b.id]={answers:{},current:0,finished:false}});
@@ -1033,6 +1057,11 @@ function updateStats(){
   $('po-correct').textContent=correct;
   $('po-wrong').textContent=answered-correct;
   $('po-pct').textContent=pct!==null?pct+'%':'—';
+  updateRevisaoCount();
+}
+function updateRevisaoCount(){
+  const el=$('rev-wrong-count');
+  if(el)el.textContent=getWrongQuestions().length;
 }
 function getBlockScore(blockId){
   const qs=getBlockQuestions(blockId);
@@ -1066,6 +1095,8 @@ function updateNav(){
       navEl.classList.toggle('active',state.currentBlock===b.id);
     }
   });
+  const navRev=$('nav-revisao');
+  if(navRev)navRev.classList.toggle('active',state.view==='revisao');
 }
 
 // ===== BUILD HOME GRID =====
@@ -1097,9 +1128,11 @@ function showView(name){
   $('view-home').style.display='none';
   $('view-block').style.display='none';
   $('view-simulado').style.display='none';
+  $('view-revisao').style.display='none';
   if(name==='home'){$('view-home').style.display='block';}
   else if(name==='block'){$('view-block').style.display='flex';}
   else if(name==='simulado'){$('view-simulado').style.display='flex';}
+  else if(name==='revisao'){$('view-revisao').style.display='flex';}
 }
 
 function openHome(){
@@ -1389,6 +1422,108 @@ function renderSimResult(){
     </div>`;
 }
 
+// ===== REVISÃO DE ERROS =====
+function getWrongQuestions(){
+  const wrongSet=new Set();
+  BLOCKS.forEach(b=>{
+    const qs=getBlockQuestions(b.id);
+    const s=state.quizState[b.id];
+    qs.forEach((q,i)=>{
+      if(s.answers[i]!==undefined&&s.answers[i]!==q.correct){
+        const gi=QUESTIONS.indexOf(q);
+        if(gi!==-1)wrongSet.add(gi);
+      }
+    });
+  });
+  if(state.simState.started){
+    QUESTIONS.forEach((q,i)=>{
+      if(state.simState.answers[i]!==undefined&&state.simState.answers[i]!==q.correct)wrongSet.add(i);
+    });
+  }
+  return Array.from(wrongSet);
+}
+
+function openRevisao(){
+  state.view='revisao';state.currentBlock=null;
+  updateNav();showView('revisao');
+  if(state.revisaoState.finished){renderRevisaoResult();}
+  else if(state.revisaoState.started){renderRevisaoQuestion(state.revisaoState.current);}
+  else{state.revisaoState.wrongList=getWrongQuestions();renderRevisaoStart();}
+}
+
+function renderRevisaoStart(){
+  const cnt=state.revisaoState.wrongList.length;
+  $('rev-counter').textContent='';
+  $('rev-pbar-fill').style.width='0%';
+  if(cnt===0){
+    $('rev-body').innerHTML=`<div class="sim-start fade-in"><div style="font-size:64px;margin-bottom:20px">🎉</div><h3>Nenhum erro para revisar!</h3><p style="color:var(--muted);margin-top:10px;line-height:1.7">Você ainda não respondeu nenhuma questão, ou acertou todas. Continue praticando nos módulos e no simulado para preencher sua lista de revisão.</p><button class="btn btn-outline" style="margin-top:24px" onclick="openHome()">← Voltar ao início</button></div>`;
+    return;
+  }
+  $('rev-body').innerHTML=`<div class="sim-start fade-in"><div style="font-size:56px;margin-bottom:16px">🔁</div><h3>Revisão de Erros</h3><p style="color:var(--muted);margin-top:10px;line-height:1.7;margin-bottom:28px">Você tem <strong style="color:var(--red)">${cnt} questão${cnt>1?'s':''}</strong> para revisar — aquelas que você errou nos quizzes e no simulado. Esta é sua chance de fixar o conteúdo!</p><div class="sim-info-grid"><div class="sinfo"><div class="sv" style="color:var(--red)">${cnt}</div><div class="sl">Para revisar</div></div><div class="sinfo"><div class="sv">100%</div><div class="sl">Meta de acertos</div></div></div><button class="btn btn-primary" style="padding:12px 32px;font-size:14px" onclick="startRevisao()">Iniciar Revisão</button></div>`;
+}
+
+function startRevisao(){
+  state.revisaoState.answers={};state.revisaoState.current=0;state.revisaoState.started=true;state.revisaoState.finished=false;
+  renderRevisaoQuestion(0);
+}
+
+function renderRevisaoQuestion(idx){
+  state.revisaoState.current=idx;
+  const list=state.revisaoState.wrongList;
+  const gi=list[idx];
+  const q=QUESTIONS[gi];
+  const pct=Math.round((idx/list.length)*100);
+  $('rev-counter').textContent=`${idx+1} / ${list.length}`;
+  $('rev-pbar-fill').style.width=pct+'%';
+  const alreadyAnswered=state.revisaoState.answers[idx]!==undefined;
+  const blockName=(BLOCKS.find(x=>x.id===q.block)||{title:'—'}).title;
+  let optsHtml=q.opts.map((opt,i)=>{
+    let cls='q-opt';
+    if(alreadyAnswered){
+      cls+=' disabled';
+      if(i===state.revisaoState.answers[idx])cls+=i===q.correct?' correct-opt':' wrong-opt';
+      else if(i===q.correct)cls+=' correct-opt';
+    }
+    return `<div class="${cls}" onclick="revisaoSelectAnswer(${idx},${i})"><span class="opt-letter">${letters[i]}</span><span class="opt-text">${opt}</span></div>`;
+  }).join('');
+  const expHtml=alreadyAnswered?`<div class="explanation show"><strong>✅ Explicação:</strong> ${q.exp}</div>`:'';
+  let navHtml='<div class="quiz-actions">';
+  if(idx>0)navHtml+=`<button class="btn btn-outline btn-sm" onclick="renderRevisaoQuestion(${idx-1})">← Anterior</button>`;
+  if(alreadyAnswered){
+    if(idx<list.length-1)navHtml+=`<button class="btn btn-primary btn-sm" onclick="renderRevisaoQuestion(${idx+1})">Próxima →</button>`;
+    else navHtml+=`<button class="btn btn-primary btn-sm" onclick="finishRevisao()">🏁 Ver Resultado</button>`;
+  }
+  navHtml+='</div>';
+  $('rev-body').innerHTML=`<div class="quiz-container fade-in"><div class="q-card"><div class="q-num" style="display:flex;justify-content:space-between;align-items:center"><span>Questão ${idx+1} de ${list.length}</span><span style="background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.2);border-radius:6px;padding:2px 8px;font-size:10px;color:var(--accent)">${blockName}</span></div><div class="q-text">${q.text}</div><div class="q-options">${optsHtml}</div>${expHtml}</div>${navHtml}<div class="keyboard-hint"><kbd>1</kbd>–<kbd>4</kbd> seleciona · <kbd>→</kbd> próxima · <kbd>←</kbd> anterior</div></div>`;
+}
+
+function revisaoSelectAnswer(idx,optIdx){
+  if(state.revisaoState.answers[idx]!==undefined)return;
+  state.revisaoState.answers[idx]=optIdx;
+  renderRevisaoQuestion(idx);
+}
+
+function finishRevisao(){
+  state.revisaoState.finished=true;renderRevisaoResult();
+}
+
+function renderRevisaoResult(){
+  const list=state.revisaoState.wrongList;
+  let correct=0;
+  list.forEach((gi,i)=>{if(state.revisaoState.answers[i]===QUESTIONS[gi].correct)correct++;});
+  const total=list.length;
+  const pct=total>0?Math.round(correct/total*100):0;
+  const emoji=pct>=90?'🏆':pct>=70?'👍':pct>=50?'💪':'📚';
+  $('rev-counter').textContent=`${total} / ${total}`;
+  $('rev-pbar-fill').style.width='100%';
+  $('rev-body').innerHTML=`<div style="max-width:600px;margin:40px auto" class="fade-in"><div class="quiz-result"><div class="qr-emoji">${emoji}</div><div class="qr-score">${pct}%</div><div class="qr-label">Revisão concluída — ${correct} de ${total} acertos</div><div class="qr-breakdown"><div class="qrb-item green"><div class="qrb-val">${correct}</div><div class="qrb-lbl">Acertos</div></div><div class="qrb-item red"><div class="qrb-val">${total-correct}</div><div class="qrb-lbl">Erros</div></div></div><div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap"><button class="btn btn-outline" onclick="resetRevisao()">🔄 Refazer revisão</button><button class="btn btn-primary" onclick="renderRevisaoQuestion(0)">📋 Revisar respostas</button></div></div></div>`;
+}
+
+function resetRevisao(){
+  state.revisaoState={wrongList:getWrongQuestions(),answers:{},current:0,started:false,finished:false};
+  renderRevisaoStart();
+}
+
 // ===== KEYBOARD =====
 document.addEventListener('keydown',e=>{
   if(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA')return;
@@ -1414,6 +1549,17 @@ document.addEventListener('keydown',e=>{
       renderSimQuestion(idx+1);
     }else if(e.key==='ArrowLeft'&&idx>0){
       renderSimQuestion(idx-1);
+    }
+  }
+  if(state.view==='revisao'&&state.revisaoState.started&&!state.revisaoState.finished){
+    const idx=state.revisaoState.current;
+    const list=state.revisaoState.wrongList;
+    if(['1','2','3','4'].includes(e.key)){
+      revisaoSelectAnswer(idx,parseInt(e.key)-1);
+    }else if(e.key==='ArrowRight'&&state.revisaoState.answers[idx]!==undefined&&idx<list.length-1){
+      renderRevisaoQuestion(idx+1);
+    }else if(e.key==='ArrowLeft'&&idx>0){
+      renderRevisaoQuestion(idx-1);
     }
   }
 });
