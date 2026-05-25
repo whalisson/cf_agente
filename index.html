@@ -222,7 +222,7 @@ kbd{background:var(--border);padding:1px 5px;border-radius:4px;font-size:10px;fo
     <!-- nav items injected by JS -->
   </div>
   <div id="sidebar-bottom">
-    <button class="btn-simulado" onclick="openSimulado()">🎯 Simulado Completo — 214Q</button>
+    <button class="btn-simulado" id="btn-simulado" onclick="openSimulado()">🎯 Simulado Completo</button>
   </div>
 </nav>
 
@@ -231,7 +231,7 @@ kbd{background:var(--border);padding:1px 5px;border-radius:4px;font-size:10px;fo
   <div id="view-home" class="fade-in">
     <div class="home-hero">
       <h2>Compilado CF<br><em>Agente 2026</em></h2>
-      <p>188 questões organizadas em 29 módulos temáticos. Estude os pontos-chave e teste seu conhecimento com quizzes interativos.</p>
+      <p id="home-hero-desc"></p>
     </div>
     <div class="home-grid" id="home-grid"></div>
     <div class="progress-overview">
@@ -278,7 +278,7 @@ kbd{background:var(--border);padding:1px 5px;border-radius:4px;font-size:10px;fo
       <h2>🎯 Simulado Completo</h2>
       <div class="sim-meta">
         <button class="btn btn-outline btn-sm" onclick="openHome()">← Home</button>
-        <div class="sim-counter" id="sim-counter">0 / 188</div>
+        <div class="sim-counter" id="sim-counter">0 / 0</div>
         <div class="sim-pbar"><span id="sim-pbar-fill" style="width:0%"></span></div>
       </div>
     </div>
@@ -1347,10 +1347,10 @@ function renderSimStart(){
   $('sim-body').innerHTML=`
     <div class="sim-start fade-in">
       <h3>🎯 Simulado Completo</h3>
-      <p>Teste seus conhecimentos com todas as <strong>188 questões</strong> do material de estudo, cobrindo todos os 29 módulos temáticos do concurso AFTE III 2026.</p>
+      <p>Teste seus conhecimentos com todas as <strong>${QUESTIONS.length} questões</strong> do material de estudo, cobrindo todos os ${BLOCKS.length} módulos temáticos do concurso AFTE III 2026.</p>
       <div class="sim-info-grid">
-        <div class="sinfo"><div class="sv">188</div><div class="sl">Questões</div></div>
-        <div class="sinfo"><div class="sv">29</div><div class="sl">Módulos</div></div>
+        <div class="sinfo"><div class="sv">${QUESTIONS.length}</div><div class="sl">Questões</div></div>
+        <div class="sinfo"><div class="sv">${BLOCKS.length}</div><div class="sl">Módulos</div></div>
         <div class="sinfo"><div class="sv">~3,2h</div><div class="sl">Tempo estimado</div></div>
         <div class="sinfo"><div class="sv">90%</div><div class="sl">Meta de acertos</div></div>
       </div>
@@ -1648,6 +1648,8 @@ loadProgress();
 buildNav();
 buildHomeGrid();
 updateStats();
+$('btn-simulado').textContent=`🎯 Simulado Completo — ${QUESTIONS.length}Q`;
+$('home-hero-desc').innerHTML=`${QUESTIONS.length} questões organizadas em ${BLOCKS.length} módulos temáticos. Estude os pontos-chave e teste seu conhecimento com quizzes interativos.`;
 openHome();
 </script>
 </body>
